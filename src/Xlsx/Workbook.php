@@ -2,6 +2,8 @@
 
 namespace Akeneo\Component\SpreadsheetParser\Xlsx;
 
+use Akeneo\Component\SpreadsheetParser\WorkbookInterface;
+
 /**
  * Represents an XLSX workbook
  *
@@ -9,7 +11,7 @@ namespace Akeneo\Component\SpreadsheetParser\Xlsx;
  * @copyright 2013 Akeneo SAS (http://www.akeneo.com)
  * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
-class Workbook
+class Workbook implements WorkbookInterface
 {
 
     /**
@@ -115,11 +117,7 @@ class Workbook
     }
 
     /**
-     * Returns an array containing all worksheet names
-     *
-     * The keys of the array should be the indexes of the worksheets
-     *
-     * @return array
+     * {@inheritdoc}
      */
     public function getWorksheets()
     {
@@ -127,11 +125,7 @@ class Workbook
     }
 
     /**
-     * Returns a row iterator for the current worksheet index
-     *
-     * @param int $worksheetIndex
-     *
-     * @return \Iterator
+     * {@inheritdoc}
      */
     public function createRowIterator($worksheetIndex)
     {
@@ -141,11 +135,7 @@ class Workbook
     }
 
     /**
-     * Returns a worksheet index by name
-     *
-     * @param string $name
-     *
-     * @return int
+     * {@inheritdoc}
      */
     public function getWorksheetIndex($name)
     {

@@ -2,6 +2,8 @@
 
 namespace Akeneo\Component\SpreadsheetParser\Xlsx;
 
+use Akeneo\Component\SpreadsheetParser\WorkbookLoaderInterface;
+
 /**
  * XLSX file reader
  *
@@ -9,7 +11,7 @@ namespace Akeneo\Component\SpreadsheetParser\Xlsx;
  * @copyright 2013 Akeneo SAS (http://www.akeneo.com)
  * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
-class WorkbookLoader
+class WorkbookLoader implements WorkbookLoaderInterface
 {
     /**
      * @var string
@@ -27,7 +29,7 @@ class WorkbookLoader
     protected $sharedStringsLoader;
 
     /**
-     * @var StyleLoader
+     * @var StylesLoader
      */
     protected $stylesLoader;
 
@@ -85,13 +87,7 @@ class WorkbookLoader
     }
 
     /**
-     * Opens an xlsx workbook and returns a Workbook object
-     *
-     * Workbook objects are cached, and will be read only once
-     *
-     * @param string $path
-     *
-     * @return Workbook
+     * {@inheritdoc}
      */
     public function open($path)
     {
