@@ -24,7 +24,6 @@
             "Akeneo\\Component\\SpreadsheetParser\\": "src"
         }
     },
-    "target-dir": "Pim/Component/SpreadsheetParser",
     "extra": {
         "branch-alias": {
             "dev-master": "1.0.x-dev"
