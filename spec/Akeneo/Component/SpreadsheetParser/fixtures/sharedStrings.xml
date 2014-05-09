@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<sst count="10" uniqueCount="9" xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">
+    <si>
+        <t>value1</t>
+    </si>
+    <si>
+        <t>value2</t>
+    </si>
+    <si>
+        <t>  </t>
+    </si>
+    <si>
+        <t> </t>
+    </si>
+    <si>
+        <t>value3</t></si><si><t>value4</t></si><si>
+        <t>value5</t>
+    </si>
+    <si>
+        <t>values6</t>
+    </si>
+    <si>
+        <t>value7</t>
+    </si>
+</sst>

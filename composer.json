@@ -1,0 +1,36 @@
+{
+    "name": "akeneo/spreadsheet-parser",
+    "description": "Akeneo Spreadsheet parser",
+    "keywords": ["akeneo", "excel", "xlsx", "reader", "parser", "spreadsheet"],
+    "homepage": "http://akeneo.com",
+    "license": "OSL-3.0",
+    "authors": [
+        {
+            "name": "Antoine Guigan",
+            "email": "antoine@akeneo.com",
+            "homepage": "http://akeneo.com"
+        },
+        {
+            "name": "Matthieu Viel",
+            "email": "matthieu.viel@akeneo.com",
+            "homepage": "http://akeneo.com"
+        }
+    ],
+    "require-dev": {
+        "phpspec/phpspec": "2.0.*@dev"
+    },
+    "autoload": {
+        "psr-4": { 
+            "Akeneo\\Component\\SpreadsheetParser\\": "src"
+        }
+    },
+    "target-dir": "Pim/Component/SpreadsheetParser",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    },
+    "config": {
+        "bin-dir": "bin"
+    }
+}

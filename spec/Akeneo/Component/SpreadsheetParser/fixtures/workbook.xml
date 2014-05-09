@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
+    <fileVersion appName="Calc"/>
+    <workbookPr backupFile="false" showObjects="all" date1904="false"/>
+    <workbookProtection/>
+    <bookViews>
+        <workbookView activeTab="2" firstSheet="0" showHorizontalScroll="true" showSheetTabs="true" showVerticalScroll="true" tabRatio="274" windowHeight="8192" windowWidth="16384" xWindow="0" yWindow="0"/>
+    </bookViews>
+    <sheets>
+        <sheet name="Worksheet1" sheetId="1" state="visible" r:id="rId2"/>
+        <sheet name="Worksheet2" sheetId="2" state="visible" r:id="rId3"/>
+        <sheet name="Worksheet3" sheetId="3" state="visible" r:id="rId4"/>
+    </sheets>
+    <calcPr iterateCount="100" refMode="A1" iterate="false" iterateDelta="0.001"/>
+</workbook>
