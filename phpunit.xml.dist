@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<phpunit bootstrap="./vendor/autoload.php"
+    backupGlobals="true"
+    colors="true" 
+    convertErrorsToExceptions="true" 
+    convertNoticesToExceptions="true" 
+    convertWarningsToExceptions="true" 
+    processIsolation="false" 
+    syntaxCheck="true" 
+    verbose="true" 
+    strict="true"
+    stopOnError="false"
+    stopOnFailure="false"
+    stopOnIncomplete="false"
+    stopOnSkipped="false">
+    <testsuite name="PHPExcel Unit Test Suite">
+        <directory suffix="Test.php">./tests</directory>
+    </testsuite>
+</phpunit> 
