@@ -59,11 +59,13 @@ class ValueTransformerSpec extends ObjectBehavior
     public function it_transforms_numbers()
     {
         $this->transform('10.2', ValueTransformer::TYPE_NUMBER, '1')->shouldReturn(10.2);
+        $this->transform('10.2', '', '1')->shouldReturn(10.2);
     }
 
     public function it_transforms_dates()
     {
         $this->transform('1', ValueTransformer::TYPE_NUMBER, '2')->shouldReturn('date_1');
+        $this->transform('1', '', '2')->shouldReturn('date_1');
     }
 
     public function it_transforms_boolans()
