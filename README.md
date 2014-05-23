@@ -12,7 +12,7 @@ Installing the package
 
 From your application root:
 
-    $ php composer.phar require --prefer-dist "akeneo/excel-connector-bundle"
+    $ php composer.phar require --prefer-dist "akeneo/spreadsheet-parser"
 
 
 Usage
