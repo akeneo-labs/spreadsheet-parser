@@ -78,6 +78,7 @@ class Archive
         if (!$this->zip) {
             $this->zip = new \ZipArchive();
             if (true !== $this->zip->open($this->archivePath)) {
+                $this->zip = null;
                 throw new \RuntimeException('Error opening file');
             }
         }
