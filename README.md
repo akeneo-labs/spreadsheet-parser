@@ -5,6 +5,7 @@ This component is designed to extract data from spreadsheets, while being easy o
 
 The actual version of the spreadsheet parser only works with xlsx files.
 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/akeneo/spreadsheet-parser/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/akeneo/spreadsheet-parser/?branch=master)
 
 Installing the package
 ----------------------
