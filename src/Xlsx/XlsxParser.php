@@ -24,7 +24,7 @@ class XlsxParser
     /**
      * @staticvar string RowBuilder class
      */
-    const ROW_BUILDER_CLASS = 'Pim\Bundle\ExcelConnectorBundle\Excel\RowBuilder';
+    const ROW_BUILDER_CLASS = 'Akeneo\Component\SpreadsheetParser\Xlsx\RowBuilder';
 
     /**
      * @staticvar string RowIterator class
@@ -77,6 +77,7 @@ class XlsxParser
             self::$workbookLoader = new WorkbookLoader(
                 static::createArchiveLoader(),
                 static::createRelationshipsLoader(),
+                static::createSharedStringsLoader(),
                 static::createStylesLoader(),
                 static::createWorksheetListReader(),
                 static::createValueTransformerFactory(),

@@ -24,6 +24,11 @@ class Archive
     protected $archivePath;
 
     /**
+     * @var \ZipArchive
+     */
+    private $zip;
+
+    /**
      * Constructor
      *
      * @param string $archivePath
@@ -46,16 +51,9 @@ class Archive
      */
     public function extract($filePath)
     {
-        $zip = new \ZipArchive();
         $tempPath = sprintf('%s/%s', $this->tempPath, $filePath);
-
-        if (!file_exists($tempPath) && true === $zip->open($this->archivePath)) {
-
-            $zip->extractTo($this->tempPath, $filePath);
-            $zip->close();
-        } else {
-
-            throw new \Exception('Error opening file');
+        if (!file_exists($tempPath)) {
+            $this->getArchive()->extractTo($this->tempPath, $filePath);
         }
 
         return $tempPath;
@@ -67,6 +65,35 @@ class Archive
     public function __destruct()
     {
         $this->deleteTemp();
+        $this->closeArchive();
+    }
+
+    /**
+     * Returns the archive
+     *
+     * @return \ZipArchive
+     */
+    protected function getArchive()
+    {
+        if (!$this->zip) {
+            $this->zip = new \ZipArchive();
+            if (true !== $this->zip->open($this->archivePath)) {
+                throw new \RuntimeException('Error opening file');
+            }
+        }
+
+        return $this->zip;
+    }
+
+    /**
+     * Closes the archive
+     */
+    protected function closeArchive()
+    {
+        if ($this->zip) {
+            $this->zip->close();
+            $this->zip = null;
+        }
     }
 
     /**

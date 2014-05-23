@@ -26,6 +26,14 @@ class ArchiveSpec extends ObjectBehavior
         $this->extract('folder/file2')->shouldHaveFileContent("file2\n");
     }
 
+    public function it_extracts_files_once()
+    {
+        $file = $this->extract('file1');
+        $file->shouldHaveFileContent("file1\n");
+        file_put_contents($file->getWrappedObject(), 'content');
+        $this->extract('file1')->shouldHaveFileContent('content');
+    }
+
     public function getMatchers()
     {
         return [
