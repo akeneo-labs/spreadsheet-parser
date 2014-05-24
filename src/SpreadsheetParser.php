@@ -26,7 +26,7 @@ class SpreadsheetParser
     /**
      * Returns the XLSX workbook loader
      *
-     * @return WorkbookLoaderInterface
+     * @return Xlsx\WorkbookLoader
      */
     public static function getXlsxWorkbookLoader()
     {
