@@ -16,6 +16,9 @@
             "homepage": "http://akeneo.com"
         }
     ],
+    "require": {
+        "symfony/options-resolver": "2.*"
+    },
     "require-dev": {
         "phpspec/phpspec": "2.0.*@dev"
     },
