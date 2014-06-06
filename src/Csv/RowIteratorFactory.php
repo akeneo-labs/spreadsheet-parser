@@ -12,7 +12,6 @@ namespace Akeneo\Component\SpreadsheetParser\Csv;
 class RowIteratorFactory
 {
     /**
-     *
      * @var string
      */
     protected $iteratorClass;
