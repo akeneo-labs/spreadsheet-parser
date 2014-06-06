@@ -47,12 +47,12 @@ class XlsxParser
     const VALUE_TRANSFORMER_CLASS = 'Akeneo\Component\SpreadsheetParser\Xlsx\ValueTransformer';
 
     /**
-     * @staticvar string Workbook class
+     * @staticvar string Spreadsheet class
      */
-    const WORKBOOK_CLASS = 'Akeneo\Component\SpreadsheetParser\Xlsx\Workbook';
+    const WORKBOOK_CLASS = 'Akeneo\Component\SpreadsheetParser\Xlsx\Spreadsheet';
 
     /**
-     * @var WorkbookLoader
+     * @var SpreadsheetLoader
      */
     private static $workbookLoader;
 
@@ -61,20 +61,20 @@ class XlsxParser
      *
      * @param string $path
      *
-     * @return Workbook
+     * @return Spreadsheet
      */
     public static function open($path)
     {
-        return static::getWorkbookLoader()->open($path);
+        return static::getSpreadsheetLoader()->open($path);
     }
 
     /**
-     * @return WorkbookLoader
+     * @return SpreadsheetLoader
      */
-    public static function getWorkbookLoader()
+    public static function getSpreadsheetLoader()
     {
         if (!isset(self::$workbookLoader)) {
-            self::$workbookLoader = new WorkbookLoader(
+            self::$workbookLoader = new SpreadsheetLoader(
                 static::createArchiveLoader(),
                 static::createRelationshipsLoader(),
                 static::createSharedStringsLoader(),

@@ -3,7 +3,7 @@
 namespace Akeneo\Component\SpreadsheetParser\Xlsx;
 
 /**
- * Workbook relationships
+ * Spreadsheet relationships
  *
  * @author    Antoine Guigan <antoine@akeneo.com>
  * @copyright 2013 Akeneo SAS (http://www.akeneo.com)

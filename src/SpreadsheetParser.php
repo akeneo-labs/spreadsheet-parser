@@ -16,20 +16,20 @@ class SpreadsheetParser
      *
      * @param string $path
      *
-     * @return WorkbookInterface
+     * @return SpreadsheetInterface
      */
     public static function open($path)
     {
-        return static::getXlsxWorkbookLoader()->open($path);
+        return static::getXlsxSpreadsheetLoader()->open($path);
     }
 
     /**
      * Returns the XLSX workbook loader
      *
-     * @return Xlsx\WorkbookLoader
+     * @return Xlsx\SpreadsheetLoader
      */
-    public static function getXlsxWorkbookLoader()
+    public static function getXlsxSpreadsheetLoader()
     {
-        return Xlsx\XlsxParser::getWorkbookLoader();
+        return Xlsx\XlsxParser::getSpreadsheetLoader();
     }
 }
