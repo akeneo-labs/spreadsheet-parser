@@ -23,11 +23,12 @@ interface WorkbookInterface
     /**
      * Returns a row iterator for the current worksheet index
      *
-     * @param int $worksheetIndex
+     * @param int   $worksheetIndex
+     * @param array $options
      *
      * @return \Iterator
      */
-    public function createRowIterator($worksheetIndex);
+    public function createRowIterator($worksheetIndex, array $options = []);
 
     /**
      * Returns a worksheet index by name

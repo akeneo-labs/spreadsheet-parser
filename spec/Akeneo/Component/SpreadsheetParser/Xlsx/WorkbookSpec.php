@@ -93,8 +93,8 @@ class WorkbookSpec extends ObjectBehavior
         RowIterator $rowIterator1,
         RowIterator $rowIterator2
     ) {
-        $rowIteratorFactory->create($valueTransformer, 'temp_path1')->willReturn($rowIterator1);
-        $rowIteratorFactory->create($valueTransformer, 'temp_path2')->willReturn($rowIterator2);
+        $rowIteratorFactory->create($valueTransformer, 'temp_path1', [])->willReturn($rowIterator1);
+        $rowIteratorFactory->create($valueTransformer, 'temp_path2', [])->willReturn($rowIterator2);
 
         $this->createRowIterator(0)->shouldReturn($rowIterator1);
         $this->createRowIterator(1)->shouldReturn($rowIterator2);

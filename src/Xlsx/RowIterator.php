@@ -36,6 +36,11 @@ class RowIterator implements \Iterator
     protected $path;
 
     /**
+     * @var array
+     */
+    protected $options;
+
+    /**
      * @var \XMLReader
      */
     protected $xml;
@@ -51,26 +56,31 @@ class RowIterator implements \Iterator
     protected $currentValue;
 
     /**
-     * @var Boolean
+     * @var boolean
      */
     protected $valid;
 
     /**
      * Constructor
      *
-     * @param ValueTransformer $valueTransformer
-     * @param string           $path
+     * @param RowBuilderFactory      $rowBuilderFactory
+     * @param ColumnIndexTransformer $columnIndexTransformer
+     * @param ValueTransformer       $valueTransformer
+     * @param string                 $path
+     * @param array                  $options
      */
     public function __construct(
         RowBuilderFactory $rowBuilderFactory,
         ColumnIndexTransformer $columnIndexTransformer,
         ValueTransformer $valueTransformer,
-        $path
+        $path,
+        array $options
     ) {
         $this->rowBuilderFactory = $rowBuilderFactory;
         $this->columnIndexTransformer = $columnIndexTransformer;
         $this->valueTransformer = $valueTransformer;
         $this->path = $path;
+        $this->options = $options;
     }
 
     /**

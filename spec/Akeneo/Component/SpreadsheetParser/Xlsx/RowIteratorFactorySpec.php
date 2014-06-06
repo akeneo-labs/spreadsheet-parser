@@ -28,8 +28,9 @@ class RowIteratorFactorySpec extends ObjectBehavior
         ColumnIndexTransformer $columnIndexTransformer,
         ValueTransformer $valueTransformer
     ) {
-        $iterator = $this->create($valueTransformer, 'path');
+        $iterator = $this->create($valueTransformer, 'path', ['options']);
         $iterator->getPath()->shouldReturn('path');
+        $iterator->getOptions()->shouldReturn(['options']);
         $iterator->getValueTransformer()->shouldReturn($valueTransformer);
         $iterator->getRowBuilderFactory()->shouldReturn($rowBuilderFactory);
         $iterator->getColumnIndexTransformer()->shouldReturn($columnIndexTransformer);
@@ -42,12 +43,14 @@ class StubRowIterator
     protected $columnIndexTransformer;
     protected $valueTransformer;
     protected $path;
-    public function __construct($rowBuilderFactory, $columnIndexTransformer, $valueTransformer, $path)
+    protected $options;
+    public function __construct($rowBuilderFactory, $columnIndexTransformer, $valueTransformer, $path, $options)
     {
         $this->rowBuilderFactory = $rowBuilderFactory;
         $this->columnIndexTransformer = $columnIndexTransformer;
         $this->valueTransformer = $valueTransformer;
         $this->path = $path;
+        $this->options = $options;
     }
     public function getPath()
     {
@@ -64,5 +67,9 @@ class StubRowIterator
     public function getColumnIndexTransformer()
     {
         return $this->columnIndexTransformer;
+    }
+    public function getOptions()
+    {
+        return $this->options;
     }
 }

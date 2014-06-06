@@ -53,12 +53,19 @@ class RowIteratorFactory
      *
      * @param ValueTransformer $valueTransformer the value transformer for the workbook
      * @param string           $path             the path to the extracted XML worksheet file
+     * @param array            $options          options specific to the format
      *
      * @return RowIterator
      */
-    public function create(ValueTransformer $valueTransformer, $path)
+    public function create(ValueTransformer $valueTransformer, $path, array $options)
     {
-        return new $this->iteratorClass($this->rowBuilderFactory, $this->columnIndexTransformer, $valueTransformer, $path);
+        return new $this->iteratorClass(
+            $this->rowBuilderFactory,
+            $this->columnIndexTransformer,
+            $valueTransformer,
+            $path,
+            $options
+        );
     }
 
 }

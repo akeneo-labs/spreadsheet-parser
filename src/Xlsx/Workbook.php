@@ -72,7 +72,6 @@ class Workbook implements WorkbookInterface
     private $valueTransformer;
 
     /**
-     *
      * @var SharedStrings
      */
     private $sharedStrings;
@@ -127,11 +126,15 @@ class Workbook implements WorkbookInterface
     /**
      * {@inheritdoc}
      */
-    public function createRowIterator($worksheetIndex)
+    public function createRowIterator($worksheetIndex, array $options = [])
     {
         $paths = array_values($this->getWorksheetPaths());
 
-        return $this->rowIteratorFactory->create($this->getValueTransformer(), $this->archive->extract($paths[$worksheetIndex]));
+        return $this->rowIteratorFactory->create(
+            $this->getValueTransformer(),
+            $this->archive->extract($paths[$worksheetIndex]),
+            $options
+        );
     }
 
     /**
