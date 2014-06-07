@@ -29,7 +29,7 @@ class RowIterator implements \Iterator
     protected $options;
 
     /**
-     * @var int
+     * @var resource
      */
     protected $fileHandle;
 
