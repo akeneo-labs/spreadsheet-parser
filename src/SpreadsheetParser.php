@@ -39,6 +39,8 @@ class SpreadsheetParser
             static::$spreadsheetLoader = new SpreadsheetLoader();
             static::configureLoaders();
         }
+
+        return static::$spreadsheetLoader;
     }
 
     protected static function configureLoaders()

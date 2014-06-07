@@ -47,6 +47,8 @@ class SpreadsheetLoader implements SpreadsheetLoaderInterface
     public function addLoader($type, SpreadsheetLoaderInterface $loader)
     {
         $this->loaders[$type] = $loader;
+
+        return $this;
     }
 
     /**

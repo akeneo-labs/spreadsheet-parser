@@ -13,9 +13,8 @@ class SpreadsheetLoaderSpec extends ObjectBehavior
         SpreadsheetLoaderInterface $otherLoader,
         SpreadsheetInterface $spreadsheet
     ) {
-        $this->addLoader('extension', $loader);
+        $this->addLoader('extension', $loader)->addLoader('other_extension', $otherLoader);
         $loader->open('file.extension')->willReturn($spreadsheet);
-        $this->addLoader('other_extension', $otherLoader);
     }
 
     public function it_is_initializable()
@@ -27,5 +26,10 @@ class SpreadsheetLoaderSpec extends ObjectBehavior
         SpreadsheetInterface $spreadsheet
     ) {
         $this->open('file.extension')->shouldReturn($spreadsheet);
+    }
+
+    public function it_throws_an_exception_if_no_loader_is_available()
+    {
+        $this->shouldThrow('\InvalidArgumentException')->duringOpen('file');
     }
 }

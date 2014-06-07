@@ -20,6 +20,11 @@ class CsvParser
     const ROW_ITERATOR_CLASS = 'Akeneo\Component\SpreadsheetParser\Csv\RowIterator';
 
     /**
+     * @staticvar string The name of the sheet
+     */
+    const SHEET_NAME = 'default';
+
+    /**
      * @var SpreadsheetLoader
      */
     private static $workbookLoader;
@@ -44,7 +49,8 @@ class CsvParser
         if (!isset(self::$workbookLoader)) {
             self::$workbookLoader = new SpreadsheetLoader(
                 static::createRowIteratorFactory(),
-                static::WORKBOOK_CLASS
+                static::WORKBOOK_CLASS,
+                static::SHEET_NAME
             );
         }
 
