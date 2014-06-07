@@ -120,7 +120,7 @@ class RowIterator implements \Iterator
 
     /**
      * Sets the default options
-     * 
+     *
      * @param OptionsResolverInterface $resolver
      */
     protected function setDefaultOptions(OptionsResolverInterface $resolver)

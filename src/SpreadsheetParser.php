@@ -12,6 +12,11 @@ namespace Akeneo\Component\SpreadsheetParser;
 class SpreadsheetParser
 {
     /**
+     * @var SpreadsheetLoader
+     */
+    protected static $spreadsheetLoader;
+
+    /**
      * Opens a workbook
      *
      * @param string $path
@@ -20,16 +25,26 @@ class SpreadsheetParser
      */
     public static function open($path)
     {
-        return static::getXlsxSpreadsheetLoader()->open($path);
+        return static::getSpreadsheetLoader()->open($path);
     }
 
     /**
-     * Returns the XLSX workbook loader
+     * Returns the workbook loader
      *
-     * @return Xlsx\SpreadsheetLoader
+     * @return SpreadsheetLoaderInterface
      */
-    public static function getXlsxSpreadsheetLoader()
+    public static function getSpreadsheetLoader()
     {
-        return Xlsx\XlsxParser::getSpreadsheetLoader();
+        if (!isset(static::$spreadsheetLoader)) {
+            static::$spreadsheetLoader = new SpreadsheetLoader();
+            static::configureLoaders();
+        }
+    }
+
+    protected static function configureLoaders()
+    {
+        static::$spreadsheetLoader
+            ->addLoader('xlsx', Xlsx\XlsxParser::getSpreadsheetLoader())
+            ->addLoader('csv', Csv\CsvParser::getSpreadsheetLoader());
     }
 }
