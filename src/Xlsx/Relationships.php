@@ -39,7 +39,7 @@ class Relationships extends AbstractXMLResource
     /**
      * Constructor
      *
-     * @param string $relationshipsPath the path to the XML relationships file
+     * @param string $path the path to the XML relationships file
      */
     public function __construct($path)
     {

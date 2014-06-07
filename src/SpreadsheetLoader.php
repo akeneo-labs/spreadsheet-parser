@@ -19,7 +19,14 @@ class SpreadsheetLoader implements SpreadsheetLoaderInterface
     protected $loaders = [];
 
     /**
-     * {@inheritdoc}
+     * Opens a workbook
+     *
+     * @param string $path
+     * @param string $type
+     *
+     * @return SpreadsheetInterface
+     *
+     * @throws InvalidArgumentException
      */
     public function open($path, $type = null)
     {

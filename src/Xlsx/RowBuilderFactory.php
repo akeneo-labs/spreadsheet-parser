@@ -22,7 +22,7 @@ class RowBuilderFactory
     /**
      * Constructor
      *
-     * @param string $className
+     * @param string $rowBuilderClass
      */
     public function __construct($rowBuilderClass)
     {

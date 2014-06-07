@@ -17,7 +17,7 @@ class ColumnIndexTransformer
      *
      * @param string $name
      *
-     * @return string
+     * @return integer
      */
     public function transform($name)
     {
