@@ -44,6 +44,9 @@ class SpreadsheetParser
         return static::$spreadsheetLoader;
     }
 
+    /**
+     * Configure the loaders
+     */
     protected static function configureLoaders()
     {
         static::$spreadsheetLoader
