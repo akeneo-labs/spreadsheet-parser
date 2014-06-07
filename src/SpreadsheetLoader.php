@@ -19,16 +19,11 @@ class SpreadsheetLoader implements SpreadsheetLoaderInterface
     protected $loaders = [];
 
     /**
-     * @var SpreadsheetLoader
-     */
-    private static $workbookLoader;
-
-    /**
      * {@inheritdoc}
      */
-    public function open($path)
+    public function open($path, $type = null)
     {
-        $type = $this->getType($path);
+        $type = $type ?: $this->getType($path);
         if (!isset($this->loaders[$type])) {
             throw new InvalidArgumentException(sprintf('No loader for type %s', $type));
         }

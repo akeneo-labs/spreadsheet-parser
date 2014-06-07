@@ -12,6 +12,11 @@ namespace Akeneo\Component\SpreadsheetParser\Xlsx;
 class XlsxParser
 {
     /**
+     * @staticvar string the name of the format
+     */
+    const FORMAT_NAME = 'xlsx';
+
+    /**
      * @staticvar string Archive class
      */
     const ARCHIVE_CLASS = 'Akeneo\Component\SpreadsheetParser\Xlsx\Archive';

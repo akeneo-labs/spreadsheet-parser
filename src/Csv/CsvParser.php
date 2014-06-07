@@ -10,6 +10,11 @@ namespace Akeneo\Component\SpreadsheetParser\Csv;
 class CsvParser
 {
     /**
+     * @staticvar string the name of the format
+     */
+    const FORMAT_NAME = 'csv';
+
+    /**
      * @staticvar string Spreadsheet class
      */
     const WORKBOOK_CLASS = 'Akeneo\Component\SpreadsheetParser\Csv\Spreadsheet';

@@ -20,12 +20,13 @@ class SpreadsheetParser
      * Opens a workbook
      *
      * @param string $path
+     * @param string $type
      *
      * @return SpreadsheetInterface
      */
-    public static function open($path)
+    public static function open($path, $type = null)
     {
-        return static::getSpreadsheetLoader()->open($path);
+        return static::getSpreadsheetLoader()->open($path, $type);
     }
 
     /**
@@ -46,7 +47,7 @@ class SpreadsheetParser
     protected static function configureLoaders()
     {
         static::$spreadsheetLoader
-            ->addLoader('xlsx', Xlsx\XlsxParser::getSpreadsheetLoader())
-            ->addLoader('csv', Csv\CsvParser::getSpreadsheetLoader());
+            ->addLoader(Xlsx\XlsxParser::FORMAT_NAME, Xlsx\XlsxParser::getSpreadsheetLoader())
+            ->addLoader(Csv\CsvParser::FORMAT_NAME, Csv\CsvParser::getSpreadsheetLoader());
     }
 }

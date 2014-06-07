@@ -1,5 +1,6 @@
 <?php
 
+use Akeneo\Component\SpreadsheetParser\Csv\CsvParser;
 use Akeneo\Component\SpreadsheetParser\SpreadsheetParser;
 
 /**
@@ -14,6 +15,19 @@ class CsvTest extends PHPUnit_Framework_TestCase
     public function testReadFile()
     {
         $workbook = SpreadsheetParser::open(__DIR__ . '/fixtures/test.csv');
+        $this->assertEquals(['default'], $workbook->getWorksheets());
+        $this->assertIteratesThrough(
+            [
+                0 => ['value', 'enclosed value', '15'],
+                1 => ['', 'value2', '']
+            ],
+            $workbook->createRowIterator(0)
+        );
+    }
+
+    public function testReadFileWithForcedFormat()
+    {
+        $workbook = SpreadsheetParser::open(__DIR__ . '/fixtures/test.txt', CsvParser::FORMAT_NAME);
         $this->assertEquals(['default'], $workbook->getWorksheets());
         $this->assertIteratesThrough(
             [
