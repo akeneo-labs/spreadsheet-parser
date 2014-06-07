@@ -38,6 +38,18 @@ class CsvTest extends PHPUnit_Framework_TestCase
         );
     }
 
+    public function testCsvParserClass()
+    {
+        $workbook = CsvParser::open(__DIR__ . '/fixtures/test.txt');
+        $this->assertIteratesThrough(
+            [
+                0 => ['value', 'enclosed value', '15'],
+                1 => ['', 'value2', '']
+            ],
+            $workbook->createRowIterator(0)
+        );
+    }
+
     protected function assertIteratesThrough($values, $iterator)
     {
         $valuesIterator = new ArrayIterator($values);

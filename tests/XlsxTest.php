@@ -1,6 +1,7 @@
 <?php
 
 use Akeneo\Component\SpreadsheetParser\SpreadsheetParser;
+use Akeneo\Component\SpreadsheetParser\Xlsx\XlsxParser;
 
 /**
  * Functional tests for XLSX files
@@ -14,6 +15,26 @@ class XlsxTest extends PHPUnit_Framework_TestCase
     public function testLibreOfficeFile()
     {
         $workbook = SpreadsheetParser::open(__DIR__ . '/fixtures/libreoffice.xlsx');
+        $this->assertEquals(['Sheet1', 'Sheet2'], $workbook->getWorksheets());
+        $this->assertIteratesThrough(
+            [
+                2 => ['value1', '', 'value2'],
+                3 => ['value3', '2010-12-05 00:00', 154],
+                5 => ['test', '2006-08-12 15:46']
+            ],
+            $workbook->createRowIterator(0)
+        );
+        $this->assertIteratesThrough(
+            [
+                4 => ['value7', '', 'value11']
+            ],
+            $workbook->createRowIterator(1)
+        );
+    }
+
+    public function testXlsParserClass()
+    {
+        $workbook = XlsxParser::open(__DIR__ . '/fixtures/libreoffice.xlsx');
         $this->assertEquals(['Sheet1', 'Sheet2'], $workbook->getWorksheets());
         $this->assertIteratesThrough(
             [
