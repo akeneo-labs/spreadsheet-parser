@@ -3,7 +3,7 @@ Akeneo Spreadsheet Parser
 
 This component is designed to extract data from spreadsheets, while being easy on resources, even for large files.
 
-The actual version of the spreadsheet parser only works with xlsx files.
+The actual version of the spreadsheet parser works with csv and xlsx files.
 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/akeneo/spreadsheet-parser/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/akeneo/spreadsheet-parser/?branch=master)
 
