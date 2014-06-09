@@ -9,7 +9,7 @@ class StylesSpec extends ObjectBehavior
 {
     public function let()
     {
-        $this->beConstructedWith(__DIR__ . '/../fixtures/styles.xml');
+        $this->beConstructedWith(__DIR__ . '/fixtures/styles.xml');
     }
 
     public function it_is_initializable()

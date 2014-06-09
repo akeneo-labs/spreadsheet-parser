@@ -8,7 +8,7 @@ class SharedStringsSpec extends ObjectBehavior
 {
     public function let()
     {
-        $this->beConstructedWith(__DIR__ . '/../fixtures/sharedStrings.xml');
+        $this->beConstructedWith(__DIR__ . '/fixtures/sharedStrings.xml');
     }
 
     public function it_is_initializable()

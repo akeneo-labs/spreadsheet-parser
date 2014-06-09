@@ -19,7 +19,7 @@ class WorksheetListReaderSpec extends ObjectBehavior
                 return 'file_' . $args[0];
             }
         );
-        $this->getWorksheetPaths($relationships, __DIR__ . '/../fixtures/workbook.xml')->shouldReturn(
+        $this->getWorksheetPaths($relationships, __DIR__ . '/fixtures/workbook.xml')->shouldReturn(
             [
                 'Worksheet1' => 'file_rId2',
                 'Worksheet2' => 'file_rId3',
