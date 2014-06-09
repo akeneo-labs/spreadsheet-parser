@@ -18,7 +18,7 @@ From your application root:
 Usage
 -----
 
-To extract data from a spreadsheet, use the following code:
+To extract data from an XLSX spreadsheet, use the following code:
 
     <?php
     
@@ -27,6 +27,31 @@ To extract data from a spreadsheet, use the following code:
     $workbook = SpreadsheetParser::open('myfile.xlsx');
 
     $myWorksheetIndex = $workbook->getWorksheetIndex('myworksheet');
+    
+    foreach ($workbook->createIterator($myWorksheetIndex) as $rowIndex => $values) {
+        var_dump($rowIndex, $values);
+    }
+
+
+By using the CSV parser options, you can specify the format of your CSV file :
+
+    <?php
+    
+    use Akeneo\Component\SpreadsheetParser\SpreadsheetParser;
+
+    $workbook = SpreadsheetParser::open('myfile.csv');
+
+    $iterator = $workbook->createIterator(
+        0,
+        [
+            'encoding'  => 'UTF-8',
+            'length'    => null,
+            'delimiter' => ',',
+            'enclosure' => '"',
+            'escape'    => '\\'
+        ]
+    );
+   
     
     foreach ($workbook->createIterator($myWorksheetIndex) as $rowIndex => $values) {
         var_dump($rowIndex, $values);

@@ -6,11 +6,14 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
- * Row iterator for an Excel worksheet
+ * Row iterator for CSV
  *
- * The iterator returns arrays of results.
- *
- * Empty values are trimed from the right of the rows, and empty rows are skipped.
+ * The following options are available :
+ *  - length:    the maximum length of read lines
+ *  - delimiter: the CSV delimiter character
+ *  - enclosure: the CSV enclosure character
+ *  - escape:    the CSV escape character
+ *  - encoding:  the encoding of the CSV file
  *
  * @author    Antoine Guigan <antoine@akeneo.com>
  * @copyright 2013 Akeneo SAS (http://www.akeneo.com)
