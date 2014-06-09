@@ -3,10 +3,10 @@
 namespace Akeneo\Component\SpreadsheetParser\Xlsx;
 
 /**
- * Workbook relationships
+ * Spreadsheet relationships
  *
  * @author    Antoine Guigan <antoine@akeneo.com>
- * @copyright 2013 Akeneo SAS (http://www.akeneo.com)
+ * @copyright 2014 Akeneo SAS (http://www.akeneo.com)
  * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 class Relationships extends AbstractXMLResource
@@ -39,14 +39,22 @@ class Relationships extends AbstractXMLResource
     /**
      * Constructor
      *
-     * @param string $relationshipsPath the path to the XML relationships file
+     * @param string $path the path to the XML relationships file
      */
-    public function __construct($relationshipsPath)
+    public function __construct($path)
     {
-        parent::__construct($relationshipsPath);
-        $this->relationshipsPath = $relationshipsPath;
+        parent::__construct($path);
+        $xml = $this->getXMLReader();
 
-        $this->readRelationShips();
+        while ($xml->read()) {
+            if (\XMLReader::ELEMENT === $xml->nodeType && 'Relationship' === $xml->name) {
+
+                $type = basename((string) $xml->getAttribute('Type'));
+                $this->storeRelationShipByType($type, $xml->getAttribute('Id'), 'xl/' . $xml->getAttribute('Target'));
+            }
+        }
+
+        $this->closeXMLReader();
     }
 
     /**
@@ -79,24 +87,6 @@ class Relationships extends AbstractXMLResource
     public function getStylesPath()
     {
         return $this->stylePath;
-    }
-
-    /**
-     * Reads the entire relationShips file once
-     */
-    private function readRelationShips()
-    {
-        $xml = $this->getXMLReader($this->relationshipsPath);
-
-        while ($xml->read()) {
-            if (\XMLReader::ELEMENT === $xml->nodeType && 'Relationship' === $xml->name) {
-
-                $type = basename((string) $xml->getAttribute('Type'));
-                $this->storeRelationShipByType($type, $xml->getAttribute('Id'), 'xl/' . $xml->getAttribute('Target'));
-            }
-        }
-
-        $this->closeXMLReader();
     }
 
     /**

@@ -16,6 +16,10 @@
             "homepage": "http://akeneo.com"
         }
     ],
+    "require": {
+        "php": ">=5.4.0",
+        "symfony/options-resolver": "2.*"
+    },
     "require-dev": {
         "phpspec/phpspec": "2.0.*@dev"
     },
@@ -26,7 +30,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.0.x-dev"
+            "dev-master": "1.1.x-dev"
         }
     },
     "config": {

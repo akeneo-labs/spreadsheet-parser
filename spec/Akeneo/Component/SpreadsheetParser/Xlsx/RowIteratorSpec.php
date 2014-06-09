@@ -50,7 +50,8 @@ class RowIteratorSpec extends ObjectBehavior
             $rowBuilderFactory,
             $columnIndexTransformer,
             $valueTransformer,
-            __DIR__ . '/../fixtures/sheet.xml'
+            __DIR__ . '/fixtures/sheet.xml',
+            []
         );
         $valueTransformer->transform(Argument::type('string'),Argument::type('string'),Argument::type('string'))->will(
             function ($args) {

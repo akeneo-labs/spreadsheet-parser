@@ -6,30 +6,51 @@ namespace Akeneo\Component\SpreadsheetParser;
  * Entry point for the SpreadsheetParser component
  *
  * @author    Antoine Guigan <antoine@akeneo.com>
- * @copyright 2013 Akeneo SAS (http://www.akeneo.com)
+ * @copyright 2014 Akeneo SAS (http://www.akeneo.com)
  * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 class SpreadsheetParser
 {
     /**
-     * Opens a workbook
+     * @var SpreadsheetLoader
+     */
+    protected static $spreadsheetLoader;
+
+    /**
+     * Opens a spreadsheet
      *
      * @param string $path
+     * @param string $type
      *
-     * @return WorkbookInterface
+     * @return SpreadsheetInterface
      */
-    public static function open($path)
+    public static function open($path, $type = null)
     {
-        return static::getXlsxWorkbookLoader()->open($path);
+        return static::getSpreadsheetLoader()->open($path, $type);
     }
 
     /**
-     * Returns the XLSX workbook loader
+     * Returns the spreadsheet loader
      *
-     * @return Xlsx\WorkbookLoader
+     * @return SpreadsheetLoaderInterface
      */
-    public static function getXlsxWorkbookLoader()
+    public static function getSpreadsheetLoader()
     {
-        return Xlsx\XlsxParser::getWorkbookLoader();
+        if (!isset(static::$spreadsheetLoader)) {
+            static::$spreadsheetLoader = new SpreadsheetLoader();
+            static::configureLoaders();
+        }
+
+        return static::$spreadsheetLoader;
+    }
+
+    /**
+     * Configure the loaders
+     */
+    protected static function configureLoaders()
+    {
+        static::$spreadsheetLoader
+            ->addLoader(Xlsx\XlsxParser::FORMAT_NAME, Xlsx\XlsxParser::getSpreadsheetLoader())
+            ->addLoader(Csv\CsvParser::FORMAT_NAME, Csv\CsvParser::getSpreadsheetLoader());
     }
 }

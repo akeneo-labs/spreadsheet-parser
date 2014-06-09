@@ -14,12 +14,12 @@ use Akeneo\Component\SpreadsheetParser\Xlsx\Styles;
 use Akeneo\Component\SpreadsheetParser\Xlsx\StylesLoader;
 use Akeneo\Component\SpreadsheetParser\Xlsx\ValueTransformer;
 use Akeneo\Component\SpreadsheetParser\Xlsx\ValueTransformerFactory;
-use Akeneo\Component\SpreadsheetParser\Xlsx\Workbook;
+use Akeneo\Component\SpreadsheetParser\Xlsx\Spreadsheet;
 use Akeneo\Component\SpreadsheetParser\Xlsx\WorksheetListReader;
 use Prophecy\Argument;
 use Prophecy\Exception\Prediction\UnexpectedCallsException;
 
-class WorkbookSpec extends ObjectBehavior
+class SpreadsheetSpec extends ObjectBehavior
 {
     public function let(
         RelationshipsLoader $relationshipsLoader,
@@ -58,7 +58,7 @@ class WorkbookSpec extends ObjectBehavior
                 );
             }
         };
-        $relationshipsLoader->open('temp_' . Workbook::RELATIONSHIPS_PATH)
+        $relationshipsLoader->open('temp_' . Spreadsheet::RELATIONSHIPS_PATH)
             ->should($beCalledAtMostOnce)
             ->willReturn($relationships);
 
@@ -72,14 +72,14 @@ class WorkbookSpec extends ObjectBehavior
         $stylesLoader->open(('temp_styles'))->willReturn($styles);
         $valueTransformerFactory->create($sharedStrings, $styles)->willReturn($valueTransformer);
 
-        $worksheetListReader->getWorksheetPaths($relationships, 'temp_' . Workbook::WORKBOOK_PATH)
+        $worksheetListReader->getWorksheetPaths($relationships, 'temp_' . Spreadsheet::WORKBOOK_PATH)
             ->should($beCalledAtMostOnce)
             ->willReturn(['sheet1' => 'path1', 'sheet2' => 'path2']);
     }
 
     public function it_is_initializable()
     {
-        $this->shouldHaveType('Akeneo\Component\SpreadsheetParser\Xlsx\Workbook');
+        $this->shouldHaveType('Akeneo\Component\SpreadsheetParser\Xlsx\Spreadsheet');
     }
 
     public function it_returns_the_worksheet_list()
@@ -93,8 +93,8 @@ class WorkbookSpec extends ObjectBehavior
         RowIterator $rowIterator1,
         RowIterator $rowIterator2
     ) {
-        $rowIteratorFactory->create($valueTransformer, 'temp_path1')->willReturn($rowIterator1);
-        $rowIteratorFactory->create($valueTransformer, 'temp_path2')->willReturn($rowIterator2);
+        $rowIteratorFactory->create($valueTransformer, 'temp_path1', [])->willReturn($rowIterator1);
+        $rowIteratorFactory->create($valueTransformer, 'temp_path2', [])->willReturn($rowIterator2);
 
         $this->createRowIterator(0)->shouldReturn($rowIterator1);
         $this->createRowIterator(1)->shouldReturn($rowIterator2);

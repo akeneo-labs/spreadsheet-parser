@@ -3,22 +3,22 @@
 namespace Akeneo\Component\SpreadsheetParser;
 
 /**
- * Common interface for workbook loaders
+ * Common interface for spreadsheet loaders
  *
  * @author    Antoine Guigan <antoine@akeneo.com>
- * @copyright 2013 Akeneo SAS (http://www.akeneo.com)
+ * @copyright 2014 Akeneo SAS (http://www.akeneo.com)
  * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
-interface WorkbookLoaderInterface
+interface SpreadsheetLoaderInterface
 {
     /**
-     * Opens a workbook and returns a Workbook object
+     * Opens a spreadsheet and returns a Spreadsheet object
      *
-     * Workbook objects are cached, and will be read only once
+     * Spreadsheet objects are cached, and will be read only once
      *
      * @param string $path
      *
-     * @return Workbook
+     * @return Spreadsheet
      */
     public function open($path);
 }

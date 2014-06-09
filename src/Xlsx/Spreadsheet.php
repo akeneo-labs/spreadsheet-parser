@@ -2,16 +2,16 @@
 
 namespace Akeneo\Component\SpreadsheetParser\Xlsx;
 
-use Akeneo\Component\SpreadsheetParser\WorkbookInterface;
+use Akeneo\Component\SpreadsheetParser\SpreadsheetInterface;
 
 /**
- * Represents an XLSX workbook
+ * Represents an XLSX spreadsheet
  *
  * @author    Antoine Guigan <antoine@akeneo.com>
- * @copyright 2013 Akeneo SAS (http://www.akeneo.com)
+ * @copyright 2014 Akeneo SAS (http://www.akeneo.com)
  * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
-class Workbook implements WorkbookInterface
+class Spreadsheet implements SpreadsheetInterface
 {
 
     /**
@@ -20,7 +20,7 @@ class Workbook implements WorkbookInterface
     const RELATIONSHIPS_PATH = 'xl/_rels/workbook.xml.rels';
 
     /**
-     * @staticvar string Path to the workbooks file inside the XLSX archive
+     * @staticvar string Path to the spreadsheets file inside the XLSX archive
      */
     const WORKBOOK_PATH = 'xl/workbook.xml';
 
@@ -72,7 +72,6 @@ class Workbook implements WorkbookInterface
     private $valueTransformer;
 
     /**
-     *
      * @var SharedStrings
      */
     private $sharedStrings;
@@ -127,11 +126,15 @@ class Workbook implements WorkbookInterface
     /**
      * {@inheritdoc}
      */
-    public function createRowIterator($worksheetIndex)
+    public function createRowIterator($worksheetIndex, array $options = [])
     {
         $paths = array_values($this->getWorksheetPaths());
 
-        return $this->rowIteratorFactory->create($this->getValueTransformer(), $this->archive->extract($paths[$worksheetIndex]));
+        return $this->rowIteratorFactory->create(
+            $this->getValueTransformer(),
+            $this->archive->extract($paths[$worksheetIndex]),
+            $options
+        );
     }
 
     /**

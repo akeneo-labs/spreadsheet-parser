@@ -8,7 +8,7 @@ class RelationshipsSpec extends ObjectBehavior
 {
     public function let()
     {
-        $this->beConstructedWith(__DIR__ . '/../fixtures/workbook.xml.rels');
+        $this->beConstructedWith(__DIR__ . '/fixtures/workbook.xml.rels');
     }
 
     public function it_is_initializable()

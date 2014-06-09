@@ -12,7 +12,7 @@ use Akeneo\Component\SpreadsheetParser\Xlsx\StylesLoader;
 use Akeneo\Component\SpreadsheetParser\Xlsx\ValueTransformerFactory;
 use Akeneo\Component\SpreadsheetParser\Xlsx\WorksheetListReader;
 
-class WorkbookLoaderSpec extends ObjectBehavior
+class SpreadsheetLoaderSpec extends ObjectBehavior
 {
     public function let(
         RelationshipsLoader $relationshipsLoader,
@@ -31,16 +31,16 @@ class WorkbookLoaderSpec extends ObjectBehavior
             $worksheetListReader,
             $valueTransformerFactory,
             $rowIteratorFactory,
-            'spec\Akeneo\Component\SpreadsheetParser\Xlsx\StubWorkbook'
+            'spec\Akeneo\Component\SpreadsheetParser\Xlsx\StubSpreadsheet'
         );
     }
 
     public function it_is_initializable()
     {
-        $this->shouldHaveType('Akeneo\Component\SpreadsheetParser\Xlsx\WorkbookLoader');
+        $this->shouldHaveType('Akeneo\Component\SpreadsheetParser\Xlsx\SpreadsheetLoader');
     }
 
-    public function it_creates_workbook_objects(
+    public function it_creates_spreadsheet_objects(
         RelationshipsLoader $relationshipsLoader,
         SharedStringsLoader $sharedStringsLoader,
         StylesLoader $stylesLoader,
@@ -52,28 +52,28 @@ class WorkbookLoaderSpec extends ObjectBehavior
     ) {
         $archiveLoader->open('path')->willReturn($archive);
 
-        $workbook = $this->open('path');
-        $workbook->getArchive()->shouldReturn($archive);
-        $workbook->getSharedStringsLoader()->shouldReturn($sharedStringsLoader);
-        $workbook->getStylesLoader()->shouldReturn($stylesLoader);
-        $workbook->getRowIteratorFactory()->shouldReturn($rowIteratorFactory);
-        $workbook->getWorksheetListReader()->shouldReturn($worksheetListReader);
-        $workbook->getValueTransformerFactory()->shouldReturn($valueTransformerFactory);
-        $workbook->getRelationshipsLoader()->shouldReturn($relationshipsLoader);
+        $spreadsheet = $this->open('path');
+        $spreadsheet->getArchive()->shouldReturn($archive);
+        $spreadsheet->getSharedStringsLoader()->shouldReturn($sharedStringsLoader);
+        $spreadsheet->getStylesLoader()->shouldReturn($stylesLoader);
+        $spreadsheet->getRowIteratorFactory()->shouldReturn($rowIteratorFactory);
+        $spreadsheet->getWorksheetListReader()->shouldReturn($worksheetListReader);
+        $spreadsheet->getValueTransformerFactory()->shouldReturn($valueTransformerFactory);
+        $spreadsheet->getRelationshipsLoader()->shouldReturn($relationshipsLoader);
     }
 
-    public function it_caches_workbook_objects(
+    public function it_caches_spreadsheet_objects(
         ArchiveLoader $archiveLoader,
         Archive $archive
     ) {
         $archiveLoader->open('path')->shouldBeCalledTimes(1)->willReturn($archive);
 
-        $workbook = $this->open('path');
-        $workbook->getArchive()->shouldReturn($archive);
+        $spreadsheet = $this->open('path');
+        $spreadsheet->getArchive()->shouldReturn($archive);
     }
 }
 
-class StubWorkbook
+class StubSpreadsheet
 {
     protected $sharedStringsLoader;
     protected $worksheetListReader;

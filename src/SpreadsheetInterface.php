@@ -3,13 +3,13 @@
 namespace Akeneo\Component\SpreadsheetParser;
 
 /**
- * Common interface for workbooks
+ * Common interface for spreadsheets
  *
  * @author    Antoine Guigan <antoine@akeneo.com>
- * @copyright 2013 Akeneo SAS (http://www.akeneo.com)
+ * @copyright 2014 Akeneo SAS (http://www.akeneo.com)
  * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
-interface WorkbookInterface
+interface SpreadsheetInterface
 {
     /**
      * Returns an array containing all worksheet names
@@ -23,11 +23,12 @@ interface WorkbookInterface
     /**
      * Returns a row iterator for the current worksheet index
      *
-     * @param int $worksheetIndex
+     * @param int   $worksheetIndex
+     * @param array $options
      *
      * @return \Iterator
      */
-    public function createRowIterator($worksheetIndex);
+    public function createRowIterator($worksheetIndex, array $options = []);
 
     /**
      * Returns a worksheet index by name

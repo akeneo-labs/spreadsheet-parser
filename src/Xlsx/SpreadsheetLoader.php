@@ -2,21 +2,21 @@
 
 namespace Akeneo\Component\SpreadsheetParser\Xlsx;
 
-use Akeneo\Component\SpreadsheetParser\WorkbookLoaderInterface;
+use Akeneo\Component\SpreadsheetParser\SpreadsheetLoaderInterface;
 
 /**
  * XLSX file reader
  *
  * @author    Antoine Guigan <antoine@akeneo.com>
- * @copyright 2013 Akeneo SAS (http://www.akeneo.com)
+ * @copyright 2014 Akeneo SAS (http://www.akeneo.com)
  * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
-class WorkbookLoader implements WorkbookLoaderInterface
+class SpreadsheetLoader implements SpreadsheetLoaderInterface
 {
     /**
      * @var string
      */
-    protected $workbookClass;
+    protected $spreadsheetClass;
 
     /**
      * @var RelationshipsLoader
@@ -63,7 +63,7 @@ class WorkbookLoader implements WorkbookLoaderInterface
      * @param WorksheetListReader     $worksheetListReader
      * @param ValueTransformerFactory $valueTransformerFactory
      * @param RowIteratorFactory      $rowIteratorFactory
-     * @param string                  $workbookClass
+     * @param string                  $spreadsheetClass
      */
     public function __construct(
             ArchiveLoader $archiveLoader,
@@ -73,7 +73,7 @@ class WorkbookLoader implements WorkbookLoaderInterface
             WorksheetListReader $worksheetListReader,
             ValueTransformerFactory $valueTransformerFactory,
             RowIteratorFactory $rowIteratorFactory,
-            $workbookClass
+            $spreadsheetClass
     )
     {
         $this->relationshipsLoader = $relationshipsLoader;
@@ -83,7 +83,7 @@ class WorkbookLoader implements WorkbookLoaderInterface
         $this->valueTransformerFactory = $valueTransformerFactory;
         $this->rowIteratorFactory = $rowIteratorFactory;
         $this->archiveLoader = $archiveLoader;
-        $this->workbookClass = $workbookClass;
+        $this->spreadsheetClass = $spreadsheetClass;
     }
 
     /**
@@ -93,7 +93,7 @@ class WorkbookLoader implements WorkbookLoaderInterface
     {
         $archive = $this->archiveLoader->open($path);
 
-        return new $this->workbookClass(
+        return new $this->spreadsheetClass(
             $archive,
             $this->relationshipsLoader,
             $this->sharedStringsLoader,

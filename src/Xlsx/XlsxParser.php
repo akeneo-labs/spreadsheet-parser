@@ -6,11 +6,16 @@ namespace Akeneo\Component\SpreadsheetParser\Xlsx;
  * Entry point for XLSX reader
  *
  * @author    Antoine Guigan <antoine@akeneo.com>
- * @copyright 2013 Akeneo SAS (http://www.akeneo.com)
+ * @copyright 2014 Akeneo SAS (http://www.akeneo.com)
  * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 class XlsxParser
 {
+    /**
+     * @staticvar string the name of the format
+     */
+    const FORMAT_NAME = 'xlsx';
+
     /**
      * @staticvar string Archive class
      */
@@ -47,34 +52,34 @@ class XlsxParser
     const VALUE_TRANSFORMER_CLASS = 'Akeneo\Component\SpreadsheetParser\Xlsx\ValueTransformer';
 
     /**
-     * @staticvar string Workbook class
+     * @staticvar string Spreadsheet class
      */
-    const WORKBOOK_CLASS = 'Akeneo\Component\SpreadsheetParser\Xlsx\Workbook';
+    const WORKBOOK_CLASS = 'Akeneo\Component\SpreadsheetParser\Xlsx\Spreadsheet';
 
     /**
-     * @var WorkbookLoader
+     * @var SpreadsheetLoader
      */
-    private static $workbookLoader;
+    private static $spreadsheetLoader;
 
     /**
      * Opens an XLSX file
      *
      * @param string $path
      *
-     * @return Workbook
+     * @return Spreadsheet
      */
     public static function open($path)
     {
-        return static::getWorkbookLoader()->open($path);
+        return static::getSpreadsheetLoader()->open($path);
     }
 
     /**
-     * @return WorkbookLoader
+     * @return SpreadsheetLoader
      */
-    public static function getWorkbookLoader()
+    public static function getSpreadsheetLoader()
     {
-        if (!isset(self::$workbookLoader)) {
-            self::$workbookLoader = new WorkbookLoader(
+        if (!isset(self::$spreadsheetLoader)) {
+            self::$spreadsheetLoader = new SpreadsheetLoader(
                 static::createArchiveLoader(),
                 static::createRelationshipsLoader(),
                 static::createSharedStringsLoader(),
@@ -86,7 +91,7 @@ class XlsxParser
             );
         }
 
-        return self::$workbookLoader;
+        return self::$spreadsheetLoader;
     }
 
     /**
