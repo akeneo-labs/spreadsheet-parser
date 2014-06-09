@@ -14,39 +14,39 @@ class CsvTest extends PHPUnit_Framework_TestCase
 {
     public function testReadFile()
     {
-        $workbook = SpreadsheetParser::open(__DIR__ . '/fixtures/test.csv');
-        $this->assertEquals(['default'], $workbook->getWorksheets());
+        $spreadsheet = SpreadsheetParser::open(__DIR__ . '/fixtures/test.csv');
+        $this->assertEquals(['default'], $spreadsheet->getWorksheets());
         $this->assertIteratesThrough(
             [
                 0 => ['value', 'enclosed value', '15'],
                 1 => ['', 'value2', '']
             ],
-            $workbook->createRowIterator(0)
+            $spreadsheet->createRowIterator(0)
         );
     }
 
     public function testReadFileWithForcedFormat()
     {
-        $workbook = SpreadsheetParser::open(__DIR__ . '/fixtures/test.txt', CsvParser::FORMAT_NAME);
-        $this->assertEquals(['default'], $workbook->getWorksheets());
+        $spreadsheet = SpreadsheetParser::open(__DIR__ . '/fixtures/test.txt', CsvParser::FORMAT_NAME);
+        $this->assertEquals(['default'], $spreadsheet->getWorksheets());
         $this->assertIteratesThrough(
             [
                 0 => ['value', 'enclosed value', '15'],
                 1 => ['', 'value2', '']
             ],
-            $workbook->createRowIterator(0)
+            $spreadsheet->createRowIterator(0)
         );
     }
 
     public function testCsvParserClass()
     {
-        $workbook = CsvParser::open(__DIR__ . '/fixtures/test.txt');
+        $spreadsheet = CsvParser::open(__DIR__ . '/fixtures/test.txt');
         $this->assertIteratesThrough(
             [
                 0 => ['value', 'enclosed value', '15'],
                 1 => ['', 'value2', '']
             ],
-            $workbook->createRowIterator(0)
+            $spreadsheet->createRowIterator(0)
         );
     }
 

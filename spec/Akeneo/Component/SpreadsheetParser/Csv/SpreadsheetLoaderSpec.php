@@ -22,13 +22,13 @@ class SpreadsheetLoaderSpec extends ObjectBehavior
         $this->shouldHaveType('Akeneo\Component\SpreadsheetParser\Csv\SpreadsheetLoader');
     }
 
-    public function it_creates_workbook_objects(
+    public function it_creates_spreadsheet_objects(
         RowIteratorFactory $rowIteratorFactory
     ) {
-        $workbook = $this->open('path');
-        $workbook->getPath()->shouldReturn('path');
-        $workbook->getSheetName()->shouldReturn('sheet');
-        $workbook->getRowIteratorFactory()->shouldReturn($rowIteratorFactory);
+        $spreadsheet = $this->open('path');
+        $spreadsheet->getPath()->shouldReturn('path');
+        $spreadsheet->getSheetName()->shouldReturn('sheet');
+        $spreadsheet->getRowIteratorFactory()->shouldReturn($rowIteratorFactory);
     }
 }
 

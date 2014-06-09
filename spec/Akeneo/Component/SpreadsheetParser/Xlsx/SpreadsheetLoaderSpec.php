@@ -40,7 +40,7 @@ class SpreadsheetLoaderSpec extends ObjectBehavior
         $this->shouldHaveType('Akeneo\Component\SpreadsheetParser\Xlsx\SpreadsheetLoader');
     }
 
-    public function it_creates_workbook_objects(
+    public function it_creates_spreadsheet_objects(
         RelationshipsLoader $relationshipsLoader,
         SharedStringsLoader $sharedStringsLoader,
         StylesLoader $stylesLoader,
@@ -52,24 +52,24 @@ class SpreadsheetLoaderSpec extends ObjectBehavior
     ) {
         $archiveLoader->open('path')->willReturn($archive);
 
-        $workbook = $this->open('path');
-        $workbook->getArchive()->shouldReturn($archive);
-        $workbook->getSharedStringsLoader()->shouldReturn($sharedStringsLoader);
-        $workbook->getStylesLoader()->shouldReturn($stylesLoader);
-        $workbook->getRowIteratorFactory()->shouldReturn($rowIteratorFactory);
-        $workbook->getWorksheetListReader()->shouldReturn($worksheetListReader);
-        $workbook->getValueTransformerFactory()->shouldReturn($valueTransformerFactory);
-        $workbook->getRelationshipsLoader()->shouldReturn($relationshipsLoader);
+        $spreadsheet = $this->open('path');
+        $spreadsheet->getArchive()->shouldReturn($archive);
+        $spreadsheet->getSharedStringsLoader()->shouldReturn($sharedStringsLoader);
+        $spreadsheet->getStylesLoader()->shouldReturn($stylesLoader);
+        $spreadsheet->getRowIteratorFactory()->shouldReturn($rowIteratorFactory);
+        $spreadsheet->getWorksheetListReader()->shouldReturn($worksheetListReader);
+        $spreadsheet->getValueTransformerFactory()->shouldReturn($valueTransformerFactory);
+        $spreadsheet->getRelationshipsLoader()->shouldReturn($relationshipsLoader);
     }
 
-    public function it_caches_workbook_objects(
+    public function it_caches_spreadsheet_objects(
         ArchiveLoader $archiveLoader,
         Archive $archive
     ) {
         $archiveLoader->open('path')->shouldBeCalledTimes(1)->willReturn($archive);
 
-        $workbook = $this->open('path');
-        $workbook->getArchive()->shouldReturn($archive);
+        $spreadsheet = $this->open('path');
+        $spreadsheet->getArchive()->shouldReturn($archive);
     }
 }
 

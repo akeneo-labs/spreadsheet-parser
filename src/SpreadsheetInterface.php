@@ -3,7 +3,7 @@
 namespace Akeneo\Component\SpreadsheetParser;
 
 /**
- * Common interface for workbooks
+ * Common interface for spreadsheets
  *
  * @author    Antoine Guigan <antoine@akeneo.com>
  * @copyright 2014 Akeneo SAS (http://www.akeneo.com)

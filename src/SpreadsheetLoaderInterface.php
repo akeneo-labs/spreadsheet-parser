@@ -3,7 +3,7 @@
 namespace Akeneo\Component\SpreadsheetParser;
 
 /**
- * Common interface for workbook loaders
+ * Common interface for spreadsheet loaders
  *
  * @author    Antoine Guigan <antoine@akeneo.com>
  * @copyright 2014 Akeneo SAS (http://www.akeneo.com)
@@ -12,7 +12,7 @@ namespace Akeneo\Component\SpreadsheetParser;
 interface SpreadsheetLoaderInterface
 {
     /**
-     * Opens a workbook and returns a Spreadsheet object
+     * Opens a spreadsheet and returns a Spreadsheet object
      *
      * Spreadsheet objects are cached, and will be read only once
      *

@@ -19,7 +19,7 @@ class SpreadsheetLoader implements SpreadsheetLoaderInterface
     protected $loaders = [];
 
     /**
-     * Opens a workbook
+     * Opens a spreadsheet
      *
      * @param string $path
      * @param string $type

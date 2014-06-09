@@ -59,7 +59,7 @@ class XlsxParser
     /**
      * @var SpreadsheetLoader
      */
-    private static $workbookLoader;
+    private static $spreadsheetLoader;
 
     /**
      * Opens an XLSX file
@@ -78,8 +78,8 @@ class XlsxParser
      */
     public static function getSpreadsheetLoader()
     {
-        if (!isset(self::$workbookLoader)) {
-            self::$workbookLoader = new SpreadsheetLoader(
+        if (!isset(self::$spreadsheetLoader)) {
+            self::$spreadsheetLoader = new SpreadsheetLoader(
                 static::createArchiveLoader(),
                 static::createRelationshipsLoader(),
                 static::createSharedStringsLoader(),
@@ -91,7 +91,7 @@ class XlsxParser
             );
         }
 
-        return self::$workbookLoader;
+        return self::$spreadsheetLoader;
     }
 
     /**

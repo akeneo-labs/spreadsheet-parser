@@ -5,7 +5,7 @@ namespace Akeneo\Component\SpreadsheetParser\Xlsx;
 use Akeneo\Component\SpreadsheetParser\SpreadsheetInterface;
 
 /**
- * Represents an XLSX workbook
+ * Represents an XLSX spreadsheet
  *
  * @author    Antoine Guigan <antoine@akeneo.com>
  * @copyright 2014 Akeneo SAS (http://www.akeneo.com)
@@ -20,7 +20,7 @@ class Spreadsheet implements SpreadsheetInterface
     const RELATIONSHIPS_PATH = 'xl/_rels/workbook.xml.rels';
 
     /**
-     * @staticvar string Path to the workbooks file inside the XLSX archive
+     * @staticvar string Path to the spreadsheets file inside the XLSX archive
      */
     const WORKBOOK_PATH = 'xl/workbook.xml';
 

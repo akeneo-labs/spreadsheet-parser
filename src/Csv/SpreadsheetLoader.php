@@ -21,7 +21,7 @@ class SpreadsheetLoader implements SpreadsheetLoaderInterface
     /**
      * @var string
      */
-    protected $workbookClass;
+    protected $spreadsheetClass;
 
     /**
      *
@@ -33,13 +33,13 @@ class SpreadsheetLoader implements SpreadsheetLoaderInterface
      * Constructor
      *
      * @param RowIteratorFactory $rowIteratorFactory
-     * @param string             $workbookClass
+     * @param string             $spreadsheetClass
      * @param string             $sheetName
      */
-    public function __construct(RowIteratorFactory $rowIteratorFactory, $workbookClass, $sheetName)
+    public function __construct(RowIteratorFactory $rowIteratorFactory, $spreadsheetClass, $sheetName)
     {
         $this->rowIteratorFactory = $rowIteratorFactory;
-        $this->workbookClass = $workbookClass;
+        $this->spreadsheetClass = $spreadsheetClass;
         $this->sheetName = $sheetName;
     }
 
@@ -48,7 +48,7 @@ class SpreadsheetLoader implements SpreadsheetLoaderInterface
      */
     public function open($path)
     {
-        return new $this->workbookClass(
+        return new $this->spreadsheetClass(
             $this->rowIteratorFactory,
             $this->sheetName,
             $path

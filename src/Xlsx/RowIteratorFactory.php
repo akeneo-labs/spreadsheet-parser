@@ -51,7 +51,7 @@ class RowIteratorFactory
     /**
      * Creates a row iterator for the XML given worksheet file
      *
-     * @param ValueTransformer $valueTransformer the value transformer for the workbook
+     * @param ValueTransformer $valueTransformer the value transformer for the spreadsheet
      * @param string           $path             the path to the extracted XML worksheet file
      * @param array            $options          options specific to the format
      *

@@ -5,7 +5,7 @@ namespace Akeneo\Component\SpreadsheetParser\Csv;
 use Akeneo\Component\SpreadsheetParser\SpreadsheetInterface;
 
 /**
- * Represents a CSV workbook
+ * Represents a CSV spreadsheet
  *
  * @author    Antoine Guigan <antoine@akeneo.com>
  * @copyright 2014 Akeneo SAS (http://www.akeneo.com)

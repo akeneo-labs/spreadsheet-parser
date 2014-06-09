@@ -3,7 +3,7 @@
 namespace Akeneo\Component\SpreadsheetParser\Xlsx;
 
 /**
- * Contains the shared strings of an Excel workbook
+ * Contains the shared strings of an Excel spreadsheet
  *
  * @author    Antoine Guigan <antoine@akeneo.com>
  * @copyright 2014 Akeneo SAS (http://www.akeneo.com)

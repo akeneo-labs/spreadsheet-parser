@@ -32,7 +32,7 @@ class CsvParser
     /**
      * @var SpreadsheetLoader
      */
-    private static $workbookLoader;
+    private static $spreadsheetLoader;
 
     /**
      * Opens a CSV file
@@ -51,15 +51,15 @@ class CsvParser
      */
     public static function getSpreadsheetLoader()
     {
-        if (!isset(self::$workbookLoader)) {
-            self::$workbookLoader = new SpreadsheetLoader(
+        if (!isset(self::$spreadsheetLoader)) {
+            self::$spreadsheetLoader = new SpreadsheetLoader(
                 static::createRowIteratorFactory(),
                 static::WORKBOOK_CLASS,
                 static::SHEET_NAME
             );
         }
 
-        return self::$workbookLoader;
+        return self::$spreadsheetLoader;
     }
 
     /**

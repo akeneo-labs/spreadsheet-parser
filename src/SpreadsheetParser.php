@@ -17,7 +17,7 @@ class SpreadsheetParser
     protected static $spreadsheetLoader;
 
     /**
-     * Opens a workbook
+     * Opens a spreadsheet
      *
      * @param string $path
      * @param string $type
@@ -30,7 +30,7 @@ class SpreadsheetParser
     }
 
     /**
-     * Returns the workbook loader
+     * Returns the spreadsheet loader
      *
      * @return SpreadsheetLoaderInterface
      */

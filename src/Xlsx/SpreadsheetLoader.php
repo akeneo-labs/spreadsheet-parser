@@ -16,7 +16,7 @@ class SpreadsheetLoader implements SpreadsheetLoaderInterface
     /**
      * @var string
      */
-    protected $workbookClass;
+    protected $spreadsheetClass;
 
     /**
      * @var RelationshipsLoader
@@ -63,7 +63,7 @@ class SpreadsheetLoader implements SpreadsheetLoaderInterface
      * @param WorksheetListReader     $worksheetListReader
      * @param ValueTransformerFactory $valueTransformerFactory
      * @param RowIteratorFactory      $rowIteratorFactory
-     * @param string                  $workbookClass
+     * @param string                  $spreadsheetClass
      */
     public function __construct(
             ArchiveLoader $archiveLoader,
@@ -73,7 +73,7 @@ class SpreadsheetLoader implements SpreadsheetLoaderInterface
             WorksheetListReader $worksheetListReader,
             ValueTransformerFactory $valueTransformerFactory,
             RowIteratorFactory $rowIteratorFactory,
-            $workbookClass
+            $spreadsheetClass
     )
     {
         $this->relationshipsLoader = $relationshipsLoader;
@@ -83,7 +83,7 @@ class SpreadsheetLoader implements SpreadsheetLoaderInterface
         $this->valueTransformerFactory = $valueTransformerFactory;
         $this->rowIteratorFactory = $rowIteratorFactory;
         $this->archiveLoader = $archiveLoader;
-        $this->workbookClass = $workbookClass;
+        $this->spreadsheetClass = $spreadsheetClass;
     }
 
     /**
@@ -93,7 +93,7 @@ class SpreadsheetLoader implements SpreadsheetLoaderInterface
     {
         $archive = $this->archiveLoader->open($path);
 
-        return new $this->workbookClass(
+        return new $this->spreadsheetClass(
             $archive,
             $this->relationshipsLoader,
             $this->sharedStringsLoader,
