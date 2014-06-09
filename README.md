@@ -31,3 +31,18 @@ To extract data from a spreadsheet, use the following code:
     foreach ($workbook->createIterator($myWorksheetIndex) as $rowIndex => $values) {
         var_dump($rowIndex, $values);
     }
+
+
+Running the tests
+-----------------
+
+To run unit tests, use phpspec:
+
+    $ php bin/phpspec run
+    
+
+To run integration tests, use phpunit:
+
+    $ phpunit
+    
+    
