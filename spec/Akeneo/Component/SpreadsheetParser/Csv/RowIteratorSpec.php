@@ -58,4 +58,23 @@ class RowIteratorSpec extends ObjectBehavior
         }
         $this->valid()->shouldReturn(false);
     }
+
+    public function it_converts_between_encodings()
+    {
+        $this->beConstructedWith(
+            __DIR__ . '/fixtures/iso-8859-15.csv',
+            [
+                'encoding' => 'iso-8859-15'
+            ]
+        );
+        $values = [['é', 'è', '€']];
+        $this->rewind();
+        foreach ($values as $i => $row) {
+            $this->key()->shouldReturn($i);
+            $this->valid()->shouldReturn(true);
+            $this->current()->shouldReturn($row);
+            $this->next();
+        }
+        $this->valid()->shouldReturn(false);
+    }
 }

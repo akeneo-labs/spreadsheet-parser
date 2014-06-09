@@ -104,7 +104,7 @@ class RowIterator implements \Iterator
         if ($this->fileHandle) {
             rewind($this->fileHandle);
         } else {
-            $this->fileHandle = fopen($this->path, 'r');
+            $this->openResource();
         }
         $this->currentKey = -1;
         $this->next();
@@ -125,6 +125,7 @@ class RowIterator implements \Iterator
      */
     protected function setDefaultOptions(OptionsResolverInterface $resolver)
     {
+        $resolver->setOptional(['encoding']);
         $resolver->setDefaults(
             [
                 'length'    => null,
@@ -133,5 +134,37 @@ class RowIterator implements \Iterator
                 'escape'    => '\\'
             ]
         );
+    }
+
+    /**
+     * Opens the file resource
+     *
+     * @return resource
+     */
+    protected function openResource()
+    {
+        $this->fileHandle = fopen($this->path, 'r');
+        if (isset($this->options['encoding'])) {
+            stream_filter_prepend(
+                $this->fileHandle,
+                sprintf(
+                    "convert.iconv.%s/%s",
+                    $this->options['encoding'],
+                    $this->getCurrentEncoding()
+                )
+            );
+        }
+    }
+
+    /**
+     * Returns the server encoding
+     *
+     * @return string
+     */
+    protected function getCurrentEncoding()
+    {
+        $locale = explode('.', setlocale(LC_CTYPE, 0));
+
+        return isset($locale[1]) ? $locale[1] : 'ASCII';
     }
 }
