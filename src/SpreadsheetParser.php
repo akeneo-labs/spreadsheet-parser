@@ -51,6 +51,7 @@ class SpreadsheetParser
     {
         static::$spreadsheetLoader
             ->addLoader(Xlsx\XlsxParser::FORMAT_NAME, Xlsx\XlsxParser::getSpreadsheetLoader())
+            ->addLoader(Xlsx\XlsxParser::MACRO_FORMAT_NAME, Xlsx\XlsxParser::getSpreadsheetLoader())
             ->addLoader(Csv\CsvParser::FORMAT_NAME, Csv\CsvParser::getSpreadsheetLoader());
     }
 }

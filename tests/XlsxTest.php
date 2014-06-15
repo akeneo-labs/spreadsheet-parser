@@ -99,6 +99,32 @@ class XlsxTest extends PHPUnit_Framework_TestCase
         );
     }
 
+    public function testMacroMsOfficeFile()
+    {
+        $spreadsheet = SpreadsheetParser::open(__DIR__ . '/fixtures/msoffice.xlsm');
+        $this->assertEquals(['Feuil1', 'Feuil2', 'Feuil3'], $spreadsheet->getWorksheets());
+        $this->assertIteratesThrough(
+            [
+                3 => ['value1', '', '2014-12-15 00:00', '2015-01-15 12:16'],
+                5 => ['', 'value5']
+            ],
+            $spreadsheet->createRowIterator(0)
+        );
+        $this->assertIteratesThrough(
+            [
+                6 => ['', 'test1'],
+            ],
+            $spreadsheet->createRowIterator(1)
+        );
+        $this->assertIteratesThrough(
+            [
+                1 => ['', '', '', 'test4'],
+            ],
+            $spreadsheet->createRowIterator(2)
+        );
+    }
+
+
     protected function assertIteratesThrough($values, $iterator)
     {
         $valuesIterator = new ArrayIterator($values);
