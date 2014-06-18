@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 1.1.2
+
+### Bug fixes
+
+ * first row index of CSV is 1 except of 0
+
 ## 1.1.1
 
 ### Enhancements

@@ -7,8 +7,8 @@ use PhpSpec\ObjectBehavior;
 class RowIteratorSpec extends ObjectBehavior
 {
     protected $values = [
-        ['value', 'enclosed value', '15'],
-        ['', 'value2', '']
+        1 => ['value', 'enclosed value', '15'],
+        2 => ['', 'value2', '']
     ];
 
     public function it_is_initializable()
@@ -34,10 +34,10 @@ class RowIteratorSpec extends ObjectBehavior
     {
         $this->beConstructedWith(__DIR__ . '/fixtures/test.csv' , []);
         $this->rewind();
-        $this->current()->shouldReturn($this->values[0]);
+        $this->current()->shouldReturn($this->values[1]);
         $this->next();
         $this->rewind();
-        $this->current()->shouldReturn($this->values[0]);
+        $this->current()->shouldReturn($this->values[1]);
     }
 
     public function it_accepts_options()
@@ -67,7 +67,7 @@ class RowIteratorSpec extends ObjectBehavior
                 'encoding' => 'iso-8859-15'
             ]
         );
-        $values = [['é', 'è', '€']];
+        $values = [1 => ['é', 'è', '€']];
         $this->rewind();
         foreach ($values as $i => $row) {
             $this->key()->shouldReturn($i);

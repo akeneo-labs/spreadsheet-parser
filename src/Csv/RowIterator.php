@@ -109,7 +109,7 @@ class RowIterator implements \Iterator
         } else {
             $this->openResource();
         }
-        $this->currentKey = -1;
+        $this->currentKey = 0;
         $this->next();
     }
 
