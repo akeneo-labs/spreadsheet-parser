@@ -2,6 +2,8 @@
 
 ## 1.1.3
 
+### Bug fixes
+
  * Fixed non-static method error in XlsxParser (Github issue #6)
 
 ## 1.1.2
