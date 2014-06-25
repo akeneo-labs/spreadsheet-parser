@@ -18,8 +18,8 @@ class CsvTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(['default'], $spreadsheet->getWorksheets());
         $this->assertIteratesThrough(
             [
-                0 => ['value', 'enclosed value', '15'],
-                1 => ['', 'value2', '']
+                1 => ['value', 'enclosed value', '15'],
+                2 => ['', 'value2', '']
             ],
             $spreadsheet->createRowIterator(0)
         );
@@ -31,8 +31,8 @@ class CsvTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(['default'], $spreadsheet->getWorksheets());
         $this->assertIteratesThrough(
             [
-                0 => ['value', 'enclosed value', '15'],
-                1 => ['', 'value2', '']
+                1 => ['value', 'enclosed value', '15'],
+                2 => ['', 'value2', '']
             ],
             $spreadsheet->createRowIterator(0)
         );
@@ -43,8 +43,8 @@ class CsvTest extends PHPUnit_Framework_TestCase
         $spreadsheet = CsvParser::open(__DIR__ . '/fixtures/test.txt');
         $this->assertIteratesThrough(
             [
-                0 => ['value', 'enclosed value', '15'],
-                1 => ['', 'value2', '']
+                1 => ['value', 'enclosed value', '15'],
+                2 => ['', 'value2', '']
             ],
             $spreadsheet->createRowIterator(0)
         );
