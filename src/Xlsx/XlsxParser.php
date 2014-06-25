@@ -110,7 +110,7 @@ class XlsxParser
     /**
      * @return RelationshipsLoader
      */
-    protected function createRelationshipsLoader()
+    protected static function createRelationshipsLoader()
     {
         return new RelationshipsLoader(static::RELATIONSHIPS_CLASS);
     }
