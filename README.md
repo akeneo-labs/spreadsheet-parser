@@ -22,7 +22,7 @@ To extract data from an XLSX spreadsheet, use the following code:
 
     <?php
     
-    use Akeneo\Component\SpreadsheetParser\AkeneoSpreadsheetParser;
+    use Akeneo\Component\SpreadsheetParser\SpreadsheetParser;
 
     $workbook = SpreadsheetParser::open('myfile.xlsx');
 
