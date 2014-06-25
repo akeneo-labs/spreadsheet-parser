@@ -22,13 +22,13 @@ To extract data from an XLSX spreadsheet, use the following code:
 
     <?php
     
-    use Akeneo\Component\SpreadsheetParser\SpreadsheetParser;
+    use Akeneo\Component\SpreadsheetParser\AkeneoSpreadsheetParser;
 
     $workbook = SpreadsheetParser::open('myfile.xlsx');
 
     $myWorksheetIndex = $workbook->getWorksheetIndex('myworksheet');
     
-    foreach ($workbook->createIterator($myWorksheetIndex) as $rowIndex => $values) {
+    foreach ($workbook->createRowIterator($myWorksheetIndex) as $rowIndex => $values) {
         var_dump($rowIndex, $values);
     }
 
