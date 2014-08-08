@@ -8,7 +8,8 @@ class RowIteratorSpec extends ObjectBehavior
 {
     protected $values = [
         1 => ['value', 'enclosed value', '15'],
-        2 => ['', 'value2', '']
+        2 => ['', 'value2', ''],
+        3  => ['é', 'è', '€']
     ];
 
     public function it_is_initializable()
@@ -70,6 +71,26 @@ class RowIteratorSpec extends ObjectBehavior
         $values = [1 => ['é', 'è', '€']];
         $this->rewind();
         foreach ($values as $i => $row) {
+            $this->key()->shouldReturn($i);
+            $this->valid()->shouldReturn(true);
+            $this->current()->shouldReturn($row);
+            $this->next();
+        }
+        $this->valid()->shouldReturn(false);
+    }
+
+    public function it_skips_converting_when_not_necessary()
+    {
+        $this->beConstructedWith(
+            __DIR__ . '/fixtures/with_options.csv',
+            [
+                'delimiter' => '|',
+                'enclosure' => "@",
+                'encoding'  => 'UTF8'
+            ]
+        );
+        $this->rewind();
+        foreach ($this->values as $i => $row) {
             $this->key()->shouldReturn($i);
             $this->valid()->shouldReturn(true);
             $this->current()->shouldReturn($row);

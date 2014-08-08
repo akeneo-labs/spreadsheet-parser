@@ -147,7 +147,9 @@ class RowIterator implements \Iterator
     protected function openResource()
     {
         $this->fileHandle = fopen($this->path, 'r');
-        if (isset($this->options['encoding'])) {
+        $currentEncoding = $this->getCurrentEncoding();
+
+        if (isset($this->options['encoding']) && $currentEncoding !== $this->options['encoding']) {
             stream_filter_prepend(
                 $this->fileHandle,
                 sprintf(

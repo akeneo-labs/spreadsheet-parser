@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 1.1.4
+
+## Improvements
+
+ * Skip converting when reading CSV if source encoding is the same as target encoding
+
 ## 1.1.3
 
 ### Bug fixes
