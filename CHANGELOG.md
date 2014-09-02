@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 1.1.5
+
+### Bug fixes
+
+ * set default system encoding to UTF8
+
 ## 1.1.4
 
 ## Improvements

@@ -170,6 +170,6 @@ class RowIterator implements \Iterator
     {
         $locale = explode('.', setlocale(LC_CTYPE, 0));
 
-        return isset($locale[1]) ? $locale[1] : 'ASCII';
+        return isset($locale[1]) ? $locale[1] : 'UTF8';
     }
 }
