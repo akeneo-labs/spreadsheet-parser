@@ -37,7 +37,7 @@ class Archive
     {
         $this->archivePath = $archivePath;
         $this->tempPath = tempnam(sys_get_temp_dir(), 'xls_parser_archive');
-        unlink($this->tempPath);
+        @unlink($this->tempPath);
     }
 
     /**
@@ -112,11 +112,11 @@ class Archive
         );
         foreach ($files as $file) {
             if ($file->isDir()) {
-                rmdir($file->getRealPath());
+                @rmdir($file->getRealPath());
             } else {
-                unlink($file->getRealPath());
+                @unlink($file->getRealPath());
             }
         }
-        rmdir($this->tempPath);
+        @rmdir($this->tempPath);
     }
 }
