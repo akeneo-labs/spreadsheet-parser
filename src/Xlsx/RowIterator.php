@@ -13,7 +13,7 @@ namespace Akeneo\Component\SpreadsheetParser\Xlsx;
  * @copyright 2014 Akeneo SAS (http://www.akeneo.com)
  * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
-class RowIterator implements \Iterator
+class RowIterator implements \Iterator, \Countable
 {
     /**
      * @var RowBuilderFactory
@@ -61,6 +61,11 @@ class RowIterator implements \Iterator
     protected $valid;
 
     /**
+     * @var int
+     */
+    protected $count;
+
+    /**
      * Constructor
      *
      * @param RowBuilderFactory      $rowBuilderFactory
@@ -81,6 +86,7 @@ class RowIterator implements \Iterator
         $this->valueTransformer = $valueTransformer;
         $this->path = $path;
         $this->options = $options;
+        $this->count = null;
     }
 
     /**
@@ -163,6 +169,33 @@ class RowIterator implements \Iterator
     public function valid()
     {
         return $this->valid;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function count()
+    {
+        if (is_null($this->count)) {
+
+            $xml = new \XMLReader();
+            $xml->open($this->path);
+
+            $count = 0;
+
+            while ($xml->read()) {
+                if (\XMLReader::ELEMENT === $xml->nodeType) {
+                    if ($xml->name === 'row') {
+                        $count++;
+                    }
+                }
+            }
+
+            unset($row);
+            $this->count = $count;
+        }
+
+        return $this->count;
     }
 
     /**
