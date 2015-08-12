@@ -3,7 +3,6 @@
 namespace Akeneo\Component\SpreadsheetParser\Csv;
 
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
  * Row iterator for CSV
@@ -124,9 +123,9 @@ class RowIterator implements \Iterator
     /**
      * Sets the default options
      *
-     * @param OptionsResolverInterface $resolver
+     * @param OptionsResolver $resolver
      */
-    protected function setDefaultOptions(OptionsResolverInterface $resolver)
+    protected function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setOptional(['encoding']);
         $resolver->setDefaults(
