@@ -126,7 +126,7 @@ class Spreadsheet implements SpreadsheetInterface
     /**
      * {@inheritdoc}
      */
-    public function createRowIterator($worksheetIndex, array $options = [])
+    public function createRowIterator($worksheetIndex, array $options = array())
     {
         $paths = array_values($this->getWorksheetPaths());
 
