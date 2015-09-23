@@ -129,12 +129,12 @@ class RowIterator implements \Iterator
     {
         $resolver->setOptional(['encoding']);
         $resolver->setDefaults(
-            [
+            array(
                 'length'    => null,
                 'delimiter' => ',',
                 'enclosure' => '"',
                 'escape'    => '\\'
-            ]
+            )
         );
     }
 
