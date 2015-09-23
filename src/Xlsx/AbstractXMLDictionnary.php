@@ -19,7 +19,7 @@ abstract class AbstractXMLDictionnary extends AbstractXMLResource
     /**
      * @var array
      */
-    protected $values = [];
+    protected $values = array();
 
     /**
      * Returns a shared string by index
