@@ -28,7 +28,7 @@ interface SpreadsheetInterface
      *
      * @return \Iterator
      */
-    public function createRowIterator($worksheetIndex, array $options = []);
+    public function createRowIterator($worksheetIndex, array $options = array());
 
     /**
      * Returns a worksheet index by name
