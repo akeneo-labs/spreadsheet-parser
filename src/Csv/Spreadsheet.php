@@ -53,7 +53,7 @@ class Spreadsheet implements SpreadsheetInterface
     /**
      * {@inheritdoc}
      */
-    public function createRowIterator($worksheetIndex, array $options = [])
+    public function createRowIterator($worksheetIndex, array $options = array())
     {
         return $this->rowIteratorFactory->create($this->path, $options);
     }
