@@ -38,7 +38,7 @@ class RowBuilder
      */
     public function getData()
     {
-        $data = [];
+        $data = array();
         foreach ($this->values as $columnIndex => $value) {
             while (count($data) < $columnIndex) {
                 $data[] = '';
