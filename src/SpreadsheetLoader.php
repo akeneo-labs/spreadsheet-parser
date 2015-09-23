@@ -16,7 +16,7 @@ class SpreadsheetLoader implements SpreadsheetLoaderInterface
     /**
      * @var SpreadsheetLoaderInterface[]
      */
-    protected $loaders = [];
+    protected $loaders = array();
 
     /**
      * Opens a spreadsheet
