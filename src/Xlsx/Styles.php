@@ -29,7 +29,7 @@ class Styles extends AbstractXMLDictionnary
     /**
      * @var array
      */
-    protected $numberFormats = [];
+    protected $numberFormats = array();
 
     /**
      * @var boolean
