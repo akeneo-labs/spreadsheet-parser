@@ -24,7 +24,7 @@ class WorksheetListReader
     {
         $xml = new \XMLReader();
         $xml->open($path);
-        $paths = [];
+        $paths = array();
         while ($xml->read()) {
             if (\XMLReader::ELEMENT === $xml->nodeType && 'sheet' === $xml->name) {
                 $rId = $xml->getAttributeNs(
