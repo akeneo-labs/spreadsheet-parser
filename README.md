@@ -5,14 +5,14 @@ This component is designed to extract data from spreadsheets, while being easy o
 
 The actual version of the spreadsheet parser works with csv and xlsx files.
 
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/akeneo/spreadsheet-parser/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/akeneo/spreadsheet-parser/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/akeneo-labs/spreadsheet-parser/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/akeneo-labs/spreadsheet-parser/?branch=master)
 
 Installing the package
 ----------------------
 
 From your application root:
 
-    $ php composer.phar require --prefer-dist "akeneo/spreadsheet-parser"
+    $ php composer.phar require --prefer-dist "akeneo-labs/spreadsheet-parser"
 
 
 Usage
