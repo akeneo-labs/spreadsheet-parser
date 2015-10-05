@@ -1,5 +1,5 @@
 {
-    "name": "akeneo/spreadsheet-parser",
+    "name": "akeneo-labs/spreadsheet-parser",
     "description": "Akeneo Spreadsheet parser. Reads XLXS files from Microsoft Excel and Open Office",
     "keywords": ["akeneo", "excel", "xlsx", "reader", "parser", "spreadsheet"],
     "homepage": "http://akeneo.com",
@@ -24,7 +24,7 @@
         "phpspec/phpspec": "2.0.*@dev"
     },
     "autoload": {
-        "psr-4": { 
+        "psr-4": {
             "Akeneo\\Component\\SpreadsheetParser\\": "src"
         }
     },
