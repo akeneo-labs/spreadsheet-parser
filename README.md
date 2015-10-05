@@ -53,7 +53,7 @@ By using the CSV parser options, you can specify the format of your CSV file :
     );
    
     
-    foreach ($workbook->createIterator($myWorksheetIndex) as $rowIndex => $values) {
+    foreach ($iterator as $rowIndex => $values) {
         var_dump($rowIndex, $values);
     }
 
