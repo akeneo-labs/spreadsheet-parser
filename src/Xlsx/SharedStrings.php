@@ -27,9 +27,10 @@ class SharedStrings extends AbstractXMLDictionnary
                 switch ($xml->name) {
                     case 'si' :
                         $this->currentIndex++;
+                        $this->values[$this->currentIndex] = $xml->readString();
                         break;
                     case 't' :
-                        $this->values[$this->currentIndex] = $xml->readString();
+                        
 
                         return;
                 }
