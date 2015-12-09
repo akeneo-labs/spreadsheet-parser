@@ -20,7 +20,8 @@ class XlsxTest extends PHPUnit_Framework_TestCase
             [
                 2 => ['value1', '', 'value2'],
                 3 => ['value3', '2010-12-05 00:00', 154],
-                5 => ['test', '2006-08-12 15:46']
+                5 => ['test', '2006-08-12 15:46'],
+                6 => ['겨울동화', '허각', '밤을 새 (feat.베이식)']
             ],
             $spreadsheet->createRowIterator(0)
         );
@@ -40,7 +41,8 @@ class XlsxTest extends PHPUnit_Framework_TestCase
             [
                 2 => ['value1', '', 'value2'],
                 3 => ['value3', '2010-12-05 00:00', 154],
-                5 => ['test', '2006-08-12 15:46']
+                5 => ['test', '2006-08-12 15:46'],
+                6 => ['겨울동화', '허각', '밤을 새 (feat.베이식)']
             ],
             $spreadsheet->createRowIterator(0)
         );
@@ -60,7 +62,8 @@ class XlsxTest extends PHPUnit_Framework_TestCase
             [
                 2 => ['value1', '', 'value2'],
                 3 => ['value3', '2010-12-05 00:00', 154],
-                5 => ['test', '2006-08-12 15:46']
+                5 => ['test', '2006-08-12 15:46'],
+                6 => ['겨울동화', '허각', '밤을 새 (feat.베이식)']
             ],
             $spreadsheet->createRowIterator(0)
         );
@@ -68,7 +71,8 @@ class XlsxTest extends PHPUnit_Framework_TestCase
             [
                 2 => ['value1', '', 'value2'],
                 3 => ['value3', '2010-12-05 00:00', 154],
-                5 => ['test', '2006-08-12 15:46']
+                5 => ['test', '2006-08-12 15:46'],
+                6 => ['겨울동화', '허각', '밤을 새 (feat.베이식)']
             ],
             $spreadsheet->createRowIterator(0)
         );
