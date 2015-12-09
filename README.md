@@ -12,16 +12,16 @@ Installing the package
 
 From your application root:
 
+```bash
     $ php composer.phar require --prefer-dist "akeneo-labs/spreadsheet-parser"
-
+```
 
 Usage
 -----
 
 To extract data from an XLSX spreadsheet, use the following code:
 
-    <?php
-    
+```php
     use Akeneo\Component\SpreadsheetParser\SpreadsheetParser;
 
     $workbook = SpreadsheetParser::open('myfile.xlsx');
@@ -31,12 +31,11 @@ To extract data from an XLSX spreadsheet, use the following code:
     foreach ($workbook->createRowIterator($myWorksheetIndex) as $rowIndex => $values) {
         var_dump($rowIndex, $values);
     }
-
+```
 
 By using the CSV parser options, you can specify the format of your CSV file :
 
-    <?php
-    
+```php 
     use Akeneo\Component\SpreadsheetParser\SpreadsheetParser;
 
     $workbook = SpreadsheetParser::open('myfile.csv');
@@ -56,18 +55,19 @@ By using the CSV parser options, you can specify the format of your CSV file :
     foreach ($workbook->createIterator($myWorksheetIndex) as $rowIndex => $values) {
         var_dump($rowIndex, $values);
     }
-
+```
 
 Running the tests
 -----------------
 
 To run unit tests, use phpspec:
 
+```bash
     $ php bin/phpspec run
-    
+```
 
 To run integration tests, use phpunit:
 
+```bash
     $ phpunit
-    
-    
+```
