@@ -28,5 +28,5 @@ install:
     - composer update $COMPOSER_FLAGS
 
 script:
-    - bin/phpspec -f dot
+    - bin/phpspec run -f dot
     - phpunit -v
