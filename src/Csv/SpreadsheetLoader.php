@@ -46,7 +46,7 @@ class SpreadsheetLoader implements SpreadsheetLoaderInterface
     /**
      * {@inheritdoc}
      */
-    public function open($path)
+    public function open($path, $type = null)
     {
         return new $this->spreadsheetClass(
             $this->rowIteratorFactory,

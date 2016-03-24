@@ -88,7 +88,7 @@ class SpreadsheetLoader implements SpreadsheetLoaderInterface
     /**
      * {@inheritdoc}
      */
-    public function open($path)
+    public function open($path, $type = null)
     {
         $archive = $this->archiveLoader->open($path);
 

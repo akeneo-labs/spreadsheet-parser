@@ -17,8 +17,9 @@ interface SpreadsheetLoaderInterface
      * Spreadsheet objects are cached, and will be read only once
      *
      * @param string $path
-     *
-     * @return Spreadsheet
+     * @param null   $type
+     * 
+     * @return SpreadsheetInterface
      */
-    public function open($path);
+    public function open($path, $type = null);
 }
