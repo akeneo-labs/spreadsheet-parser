@@ -16,7 +16,7 @@ class RowBuilder
      *
      * @var array
      */
-    protected $values = array();
+    protected $values = [];
 
     /**
      * Adds a value to the row

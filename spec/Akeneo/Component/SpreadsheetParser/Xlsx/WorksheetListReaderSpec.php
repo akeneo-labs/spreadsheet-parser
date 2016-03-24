@@ -3,7 +3,7 @@
 namespace spec\Akeneo\Component\SpreadsheetParser\Xlsx;
 
 use PhpSpec\ObjectBehavior;
-use Akeneo\Component\SpreadsheetParser\Xlsx\Relationships;
+use Prophecy\Argument;
 
 class WorksheetListReaderSpec extends ObjectBehavior
 {
@@ -12,9 +12,10 @@ class WorksheetListReaderSpec extends ObjectBehavior
         $this->shouldHaveType('Akeneo\Component\SpreadsheetParser\Xlsx\WorksheetListReader');
     }
 
-    public function it_returns_worksheet_paths(Relationships $relationships)
+    public function it_returns_worksheet_paths($relationships)
     {
-        $relationships->getWorksheetPath(\Prophecy\Argument::type('string'))->will(
+        $relationships->beADoubleOf('Akeneo\Component\SpreadsheetParser\Xlsx\Relationships');
+        $relationships->getWorksheetPath(Argument::type('string'))->will(
             function ($args) {
                 return 'file_' . $args[0];
             }

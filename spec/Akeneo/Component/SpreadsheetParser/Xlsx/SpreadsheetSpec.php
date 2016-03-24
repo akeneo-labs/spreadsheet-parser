@@ -3,37 +3,37 @@
 namespace spec\Akeneo\Component\SpreadsheetParser\Xlsx;
 
 use PhpSpec\ObjectBehavior;
-use Akeneo\Component\SpreadsheetParser\Xlsx\Archive;
-use Akeneo\Component\SpreadsheetParser\Xlsx\Relationships;
-use Akeneo\Component\SpreadsheetParser\Xlsx\RelationshipsLoader;
-use Akeneo\Component\SpreadsheetParser\Xlsx\RowIterator;
-use Akeneo\Component\SpreadsheetParser\Xlsx\RowIteratorFactory;
-use Akeneo\Component\SpreadsheetParser\Xlsx\SharedStrings;
-use Akeneo\Component\SpreadsheetParser\Xlsx\SharedStringsLoader;
-use Akeneo\Component\SpreadsheetParser\Xlsx\Styles;
-use Akeneo\Component\SpreadsheetParser\Xlsx\StylesLoader;
-use Akeneo\Component\SpreadsheetParser\Xlsx\ValueTransformer;
-use Akeneo\Component\SpreadsheetParser\Xlsx\ValueTransformerFactory;
 use Akeneo\Component\SpreadsheetParser\Xlsx\Spreadsheet;
-use Akeneo\Component\SpreadsheetParser\Xlsx\WorksheetListReader;
 use Prophecy\Argument;
 use Prophecy\Exception\Prediction\UnexpectedCallsException;
 
 class SpreadsheetSpec extends ObjectBehavior
 {
     public function let(
-        RelationshipsLoader $relationshipsLoader,
-        SharedStringsLoader $sharedStringsLoader,
-        StylesLoader $stylesLoader,
-        WorksheetListReader $worksheetListReader,
-        ValueTransformerFactory $valueTransformerFactory,
-        RowIteratorFactory $rowIteratorFactory,
-        Archive $archive,
-        Relationships $relationships,
-        SharedStrings $sharedStrings,
-        ValueTransformer $valueTransformer,
-        Styles $styles
+        $relationshipsLoader,
+        $sharedStringsLoader,
+        $stylesLoader,
+        $worksheetListReader,
+        $valueTransformerFactory,
+        $rowIteratorFactory,
+        $archive,
+        $relationships,
+        $sharedStrings,
+        $valueTransformer,
+        $styles
     ) {
+        $relationshipsLoader->beADoubleOf('Akeneo\Component\SpreadsheetParser\Xlsx\RelationshipsLoader');
+        $sharedStringsLoader->beADoubleOf('Akeneo\Component\SpreadsheetParser\Xlsx\SharedStringsLoader');
+        $stylesLoader->beADoubleOf('Akeneo\Component\SpreadsheetParser\Xlsx\StylesLoader');
+        $worksheetListReader->beADoubleOf('Akeneo\Component\SpreadsheetParser\Xlsx\WorksheetListReader');
+        $valueTransformerFactory->beADoubleOf('Akeneo\Component\SpreadsheetParser\Xlsx\ValueTransformerFactory');
+        $rowIteratorFactory->beADoubleOf('Akeneo\Component\SpreadsheetParser\Xlsx\RowIteratorFactory');
+        $archive->beADoubleOf('Akeneo\Component\SpreadsheetParser\Xlsx\Archive');
+        $relationships->beADoubleOf('Akeneo\Component\SpreadsheetParser\Xlsx\Relationships');
+        $sharedStrings->beADoubleOf('Akeneo\Component\SpreadsheetParser\Xlsx\SharedStrings');
+        $valueTransformer->beADoubleOf('Akeneo\Component\SpreadsheetParser\Xlsx\ValueTransformer');
+        $styles->beADoubleOf('Akeneo\Component\SpreadsheetParser\Xlsx\Styles');
+
         $this->beConstructedWith(
             $archive,
             $relationshipsLoader,
@@ -88,11 +88,14 @@ class SpreadsheetSpec extends ObjectBehavior
     }
 
     public function it_creates_row_iterators(
-        ValueTransformer $valueTransformer,
-        RowIteratorFactory $rowIteratorFactory,
-        RowIterator $rowIterator1,
-        RowIterator $rowIterator2
+        $valueTransformer,
+        $rowIteratorFactory,
+        $rowIterator1,
+        $rowIterator2
     ) {
+        $rowIterator1->beADoubleOf('Akeneo\Component\SpreadsheetParser\Xlsx\RowIterator');
+        $rowIterator2->beADoubleOf('Akeneo\Component\SpreadsheetParser\Xlsx\RowIterator');
+
         $rowIteratorFactory->create($valueTransformer, 'temp_path1', [])->willReturn($rowIterator1);
         $rowIteratorFactory->create($valueTransformer, 'temp_path2', [])->willReturn($rowIterator2);
 

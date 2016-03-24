@@ -80,8 +80,8 @@ class Styles extends AbstractXMLDictionnary
                     case 'numFmt' :
                         $this->numberFormats[$xml->getAttribute('numFmtId')] =
                             preg_match('{^(\[\$[[:alpha:]]*-[0-9A-F]*\])*[hmsdy]}i', $xml->getAttribute('formatCode'))
-                            ? static::FORMAT_DATE
-                            : static::FORMAT_DEFAULT;
+                                ? static::FORMAT_DATE
+                                : static::FORMAT_DEFAULT;
                     case 'cellXfs' :
                         $needsRewind = true;
                 }

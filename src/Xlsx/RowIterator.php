@@ -110,7 +110,7 @@ class RowIterator implements \Iterator
             if (\XMLReader::ELEMENT === $this->xml->nodeType) {
                 switch ($this->xml->name) {
                     case 'row' :
-                        $currentKey = (int) $this->xml->getAttribute('r');
+                        $currentKey = (int)$this->xml->getAttribute('r');
                         $rowBuilder = $this->rowBuilderFactory->create();
                         break;
                     case 'c' :
@@ -174,6 +174,6 @@ class RowIterator implements \Iterator
      */
     protected function getValue($value)
     {
-       return null === $value ? ''  : $value;
+        return null === $value ? '' : $value;
     }
 }

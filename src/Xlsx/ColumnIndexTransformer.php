@@ -24,11 +24,11 @@ class ColumnIndexTransformer
         $number = -1;
 
         foreach (str_split($name) as $chr) {
-            $digit = ord($chr) -65;
+            $digit = ord($chr) - 65;
             if ($digit < 0) {
                 break;
             }
-            $number = ($number+1) * 26 + $digit;
+            $number = ($number + 1) * 26 + $digit;
         }
 
         return $number;

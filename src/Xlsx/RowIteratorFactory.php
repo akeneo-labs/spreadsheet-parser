@@ -41,8 +41,7 @@ class RowIteratorFactory
         RowBuilderFactory $rowBuilderFactory,
         ColumnIndexTransformer $columnIndexTransformer,
         $iteratorClass
-    )
-    {
+    ) {
         $this->rowBuilderFactory = $rowBuilderFactory;
         $this->columnIndexTransformer = $columnIndexTransformer;
         $this->iteratorClass = $iteratorClass;

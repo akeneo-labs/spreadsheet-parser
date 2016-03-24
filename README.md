@@ -5,6 +5,7 @@ This component is designed to extract data from spreadsheets, while being easy o
 
 The current version of the spreadsheet parser works with csv and xlsx files.
 
+[![Travis Build Status](https://travis-ci.org/akeneo-labs/spreadsheet-parser.svg?branch=master)](https://travis-ci.org/akeneo-labs/spreadsheet-parser)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/akeneo-labs/spreadsheet-parser/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/akeneo-labs/spreadsheet-parser/?branch=master)
 
 Installing the package

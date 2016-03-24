@@ -3,14 +3,12 @@
 namespace spec\Akeneo\Component\SpreadsheetParser\Xlsx;
 
 use PhpSpec\ObjectBehavior;
-use Akeneo\Component\SpreadsheetParser\Xlsx\DateTransformer;
-use Akeneo\Component\SpreadsheetParser\Xlsx\SharedStrings;
-use Akeneo\Component\SpreadsheetParser\Xlsx\Styles;
 
 class ValueTransformerFactorySpec extends ObjectBehavior
 {
-    public function let(DateTransformer $dateTransformer)
+    public function let($dateTransformer)
     {
+        $dateTransformer->beADoubleOf('Akeneo\Component\SpreadsheetParser\Xlsx\DateTransformer');
         $this->beConstructedWith($dateTransformer, 'spec\Akeneo\Component\SpreadsheetParser\Xlsx\StubValueTransformer');
     }
 
@@ -19,11 +17,11 @@ class ValueTransformerFactorySpec extends ObjectBehavior
         $this->shouldHaveType('Akeneo\Component\SpreadsheetParser\Xlsx\ValueTransformerFactory');
     }
 
-    public function it_creates_value_transformers(
-        DateTransformer $dateTransformer,
-        SharedStrings $sharedStrings,
-        Styles $styles
-    ) {
+    public function it_creates_value_transformers($dateTransformer, $sharedStrings, $styles)
+    {
+        $sharedStrings->beADoubleOf('Akeneo\Component\SpreadsheetParser\Xlsx\SharedStrings');
+        $styles->beADoubleOf('Akeneo\Component\SpreadsheetParser\Xlsx\Styles');
+
         $transformer = $this->create($sharedStrings, $styles);
         $transformer->getSharedStrings()->shouldReturn($sharedStrings);
         $transformer->getDateTransformer()->shouldReturn($dateTransformer);
@@ -36,12 +34,14 @@ class StubValueTransformer
     protected $dateTransformer;
     protected $sharedStrings;
     protected $styles;
+
     public function __construct($dateTransformer, $sharedStrings, $styles)
     {
         $this->sharedStrings = $sharedStrings;
         $this->dateTransformer = $dateTransformer;
         $this->styles = $styles;
     }
+
     public function getSharedStrings()
     {
         return $this->sharedStrings;
@@ -51,6 +51,7 @@ class StubValueTransformer
     {
         return $this->dateTransformer;
     }
+
     public function getStyles()
     {
         return $this->styles;
