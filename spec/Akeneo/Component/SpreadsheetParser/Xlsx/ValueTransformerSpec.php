@@ -3,18 +3,19 @@
 namespace spec\Akeneo\Component\SpreadsheetParser\Xlsx;
 
 use PhpSpec\ObjectBehavior;
+use Akeneo\Component\SpreadsheetParser\Xlsx\DateTransformer;
+use Akeneo\Component\SpreadsheetParser\Xlsx\SharedStrings;
 use Akeneo\Component\SpreadsheetParser\Xlsx\Styles;
 use Akeneo\Component\SpreadsheetParser\Xlsx\ValueTransformer;
 use Prophecy\Argument;
 
 class ValueTransformerSpec extends ObjectBehavior
 {
-    public function let($dateTransformer, $sharedStrings, $styles)
-    {
-        $dateTransformer->beADoubleOf('Akeneo\Component\SpreadsheetParser\Xlsx\DateTransformer');
-        $sharedStrings->beADoubleOf('Akeneo\Component\SpreadsheetParser\Xlsx\SharedStrings');
-        $styles->beADoubleOf('Akeneo\Component\SpreadsheetParser\Xlsx\Styles');
-
+    public function let(
+        DateTransformer $dateTransformer,
+        SharedStrings $sharedStrings,
+        Styles $styles
+    ) {
         $styles->get('1')->willReturn(Styles::FORMAT_DEFAULT);
         $styles->get('2')->willReturn(Styles::FORMAT_DATE);
         $dateTransformer->transform(Argument::type('string'))->will(

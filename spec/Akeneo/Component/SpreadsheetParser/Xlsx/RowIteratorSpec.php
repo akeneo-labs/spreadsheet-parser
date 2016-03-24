@@ -3,21 +3,21 @@
 namespace spec\Akeneo\Component\SpreadsheetParser\Xlsx;
 
 use PhpSpec\ObjectBehavior;
+use Akeneo\Component\SpreadsheetParser\Xlsx\ColumnIndexTransformer;
+use Akeneo\Component\SpreadsheetParser\Xlsx\RowBuilder;
+use Akeneo\Component\SpreadsheetParser\Xlsx\RowBuilderFactory;
+use Akeneo\Component\SpreadsheetParser\Xlsx\ValueTransformer;
 use Prophecy\Argument;
 
 class RowIteratorSpec extends ObjectBehavior
 {
     public function let(
-        $rowBuilderFactory,
-        $columnIndexTransformer,
-        $valueTransformer,
-        $rowBuilder
-    ) {
-        $rowBuilderFactory->beADoubleOf('Akeneo\Component\SpreadsheetParser\Xlsx\RowBuilderFactory');
-        $columnIndexTransformer->beADoubleOf('Akeneo\Component\SpreadsheetParser\Xlsx\ColumnIndexTransformer');
-        $valueTransformer->beADoubleOf('Akeneo\Component\SpreadsheetParser\Xlsx\ValueTransformer');
-        $rowBuilder->beADoubleOf('Akeneo\Component\SpreadsheetParser\Xlsx\RowBuilder');
-
+        RowBuilderFactory $rowBuilderFactory,
+        ColumnIndexTransformer $columnIndexTransformer,
+        ValueTransformer $valueTransformer,
+        RowBuilder $rowBuilder
+    )
+    {
         $startWith = function ($startString) {
             return function ($string) use ($startString) {
                 return $startString === substr($string, 0, strlen($startString));
@@ -54,12 +54,12 @@ class RowIteratorSpec extends ObjectBehavior
             __DIR__ . '/fixtures/sheet.xml',
             []
         );
-        $valueTransformer->transform(Argument::type('string'), Argument::type('string'),
-            Argument::type('string'))->will(
-            function ($args) {
-                return $args;
-            }
-        );
+        $valueTransformer->transform(Argument::type('string'), Argument::type('string'), Argument::type('string'))
+            ->will(
+                function ($args) {
+                    return $args;
+                }
+            );
     }
 
     public function it_is_initializable()

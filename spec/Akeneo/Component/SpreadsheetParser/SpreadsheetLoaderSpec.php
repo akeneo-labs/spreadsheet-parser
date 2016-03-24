@@ -2,16 +2,18 @@
 
 namespace spec\Akeneo\Component\SpreadsheetParser;
 
+use Akeneo\Component\SpreadsheetParser\SpreadsheetInterface;
+use Akeneo\Component\SpreadsheetParser\SpreadsheetLoaderInterface;
 use PhpSpec\ObjectBehavior;
 
 class SpreadsheetLoaderSpec extends ObjectBehavior
 {
-    public function let($loader, $otherLoader, $spreadsheet)
+    public function let(
+        SpreadsheetLoaderInterface $loader,
+        SpreadsheetLoaderInterface $otherLoader,
+        SpreadsheetInterface $spreadsheet
+    )
     {
-        $loader->beADoubleOf('Akeneo\Component\SpreadsheetParser\SpreadsheetLoaderInterface');
-        $otherLoader->beADoubleOf('Akeneo\Component\SpreadsheetParser\SpreadsheetLoaderInterface');
-        $spreadsheet->beADoubleOf('Akeneo\Component\SpreadsheetParser\SpreadsheetInterface');
-
         $this->addLoader('extension', $loader)->addLoader('other_extension', $otherLoader);
         $loader->open('file.extension')->willReturn($spreadsheet);
     }
@@ -21,7 +23,9 @@ class SpreadsheetLoaderSpec extends ObjectBehavior
         $this->shouldHaveType('Akeneo\Component\SpreadsheetParser\SpreadsheetLoader');
     }
 
-    public function it_uses_the_loader_corresponding_to_the_file_extension($spreadsheet)
+    public function it_uses_the_loader_corresponding_to_the_file_extension(
+        SpreadsheetInterface $spreadsheet
+    )
     {
         $this->open('file.extension')->shouldReturn($spreadsheet);
     }

@@ -46,7 +46,7 @@ class RowIterator implements \Iterator
     protected $xml;
 
     /**
-     * @var array
+     * @var int
      */
     protected $currentKey;
 
@@ -105,6 +105,12 @@ class RowIterator implements \Iterator
     public function next()
     {
         $this->valid = false;
+
+        $style = null;
+        $type = null;
+        $columnIndex = null;
+        $rowBuilder = null;
+        $currentKey = 0;
 
         while ($this->xml->read()) {
             if (\XMLReader::ELEMENT === $this->xml->nodeType) {

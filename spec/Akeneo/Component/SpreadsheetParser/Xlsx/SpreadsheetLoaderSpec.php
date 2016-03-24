@@ -4,6 +4,7 @@ namespace spec\Akeneo\Component\SpreadsheetParser\Xlsx;
 
 use PhpSpec\ObjectBehavior;
 use Akeneo\Component\SpreadsheetParser\Xlsx\Archive;
+use Akeneo\Component\SpreadsheetParser\Xlsx\ArchiveLoader;
 use Akeneo\Component\SpreadsheetParser\Xlsx\RelationshipsLoader;
 use Akeneo\Component\SpreadsheetParser\Xlsx\RowIteratorFactory;
 use Akeneo\Component\SpreadsheetParser\Xlsx\SharedStringsLoader;
@@ -14,22 +15,14 @@ use Akeneo\Component\SpreadsheetParser\Xlsx\WorksheetListReader;
 class SpreadsheetLoaderSpec extends ObjectBehavior
 {
     public function let(
-        $relationshipsLoader,
-        $sharedStringsLoader,
-        $stylesLoader,
-        $worksheetListReader,
-        $valueTransformerFactory,
-        $rowIteratorFactory,
-        $archiveLoader
+        RelationshipsLoader $relationshipsLoader,
+        SharedStringsLoader $sharedStringsLoader,
+        StylesLoader $stylesLoader,
+        WorksheetListReader $worksheetListReader,
+        ValueTransformerFactory $valueTransformerFactory,
+        RowIteratorFactory $rowIteratorFactory,
+        ArchiveLoader $archiveLoader
     ) {
-        $relationshipsLoader->beADoubleOf('Akeneo\Component\SpreadsheetParser\Xlsx\RelationshipsLoader');
-        $sharedStringsLoader->beADoubleOf('Akeneo\Component\SpreadsheetParser\Xlsx\SharedStringsLoader');
-        $stylesLoader->beADoubleOf('Akeneo\Component\SpreadsheetParser\Xlsx\StylesLoader');
-        $worksheetListReader->beADoubleOf('Akeneo\Component\SpreadsheetParser\Xlsx\WorksheetListReader');
-        $valueTransformerFactory->beADoubleOf('Akeneo\Component\SpreadsheetParser\Xlsx\ValueTransformerFactory');
-        $rowIteratorFactory->beADoubleOf('Akeneo\Component\SpreadsheetParser\Xlsx\RowIteratorFactory');
-        $archiveLoader->beADoubleOf('Akeneo\Component\SpreadsheetParser\Xlsx\ArchiveLoader');
-
         $this->beConstructedWith(
             $archiveLoader,
             $relationshipsLoader,
@@ -48,17 +41,15 @@ class SpreadsheetLoaderSpec extends ObjectBehavior
     }
 
     public function it_creates_spreadsheet_objects(
-        $relationshipsLoader,
-        $sharedStringsLoader,
-        $stylesLoader,
-        $worksheetListReader,
-        $valueTransformerFactory,
-        $rowIteratorFactory,
-        $archiveLoader,
-        $archive
+        RelationshipsLoader $relationshipsLoader,
+        SharedStringsLoader $sharedStringsLoader,
+        StylesLoader $stylesLoader,
+        WorksheetListReader $worksheetListReader,
+        ValueTransformerFactory $valueTransformerFactory,
+        RowIteratorFactory $rowIteratorFactory,
+        ArchiveLoader $archiveLoader,
+        Archive $archive
     ) {
-        $archive->beADoubleOf('Akeneo\Component\SpreadsheetParser\Xlsx\Archive');
-
         $archiveLoader->open('path')->willReturn($archive);
 
         $spreadsheet = $this->open('path');
@@ -71,10 +62,10 @@ class SpreadsheetLoaderSpec extends ObjectBehavior
         $spreadsheet->getRelationshipsLoader()->shouldReturn($relationshipsLoader);
     }
 
-    public function it_caches_spreadsheet_objects($archiveLoader, $archive)
-    {
-        $archive->beADoubleOf('Akeneo\Component\SpreadsheetParser\Xlsx\Archive');
-
+    public function it_caches_spreadsheet_objects(
+        ArchiveLoader $archiveLoader,
+        Archive $archive
+    ) {
         $archiveLoader->open('path')->shouldBeCalledTimes(1)->willReturn($archive);
 
         $spreadsheet = $this->open('path');

@@ -19,6 +19,8 @@ class WorksheetListReader
      *
      * @param Relationships $relationships
      * @param string        $path
+     * 
+     * @return array
      */
     public function getWorksheetPaths(Relationships $relationships, $path)
     {

@@ -3,13 +3,12 @@
 namespace spec\Akeneo\Component\SpreadsheetParser\Csv;
 
 use PhpSpec\ObjectBehavior;
+use Akeneo\Component\SpreadsheetParser\Csv\RowIteratorFactory;
 
 class SpreadsheetLoaderSpec extends ObjectBehavior
 {
-    public function let($rowIteratorFactory)
+    public function let(RowIteratorFactory $rowIteratorFactory)
     {
-        $rowIteratorFactory->beADoubleOf('Akeneo\Component\SpreadsheetParser\Csv\RowIteratorFactory');
-
         $this->beConstructedWith(
             $rowIteratorFactory,
             'spec\Akeneo\Component\SpreadsheetParser\Csv\StubSpreadsheet',
@@ -22,7 +21,7 @@ class SpreadsheetLoaderSpec extends ObjectBehavior
         $this->shouldHaveType('Akeneo\Component\SpreadsheetParser\Csv\SpreadsheetLoader');
     }
 
-    public function it_creates_spreadsheet_objects($rowIteratorFactory)
+    public function it_creates_spreadsheet_objects(RowIteratorFactory $rowIteratorFactory)
     {
         $spreadsheet = $this->open('path');
         $spreadsheet->getPath()->shouldReturn('path');

@@ -3,12 +3,14 @@
 namespace spec\Akeneo\Component\SpreadsheetParser\Xlsx;
 
 use PhpSpec\ObjectBehavior;
+use Akeneo\Component\SpreadsheetParser\Xlsx\DateTransformer;
+use Akeneo\Component\SpreadsheetParser\Xlsx\SharedStrings;
+use Akeneo\Component\SpreadsheetParser\Xlsx\Styles;
 
 class ValueTransformerFactorySpec extends ObjectBehavior
 {
-    public function let($dateTransformer)
+    public function let(DateTransformer $dateTransformer)
     {
-        $dateTransformer->beADoubleOf('Akeneo\Component\SpreadsheetParser\Xlsx\DateTransformer');
         $this->beConstructedWith($dateTransformer, 'spec\Akeneo\Component\SpreadsheetParser\Xlsx\StubValueTransformer');
     }
 
@@ -17,11 +19,11 @@ class ValueTransformerFactorySpec extends ObjectBehavior
         $this->shouldHaveType('Akeneo\Component\SpreadsheetParser\Xlsx\ValueTransformerFactory');
     }
 
-    public function it_creates_value_transformers($dateTransformer, $sharedStrings, $styles)
-    {
-        $sharedStrings->beADoubleOf('Akeneo\Component\SpreadsheetParser\Xlsx\SharedStrings');
-        $styles->beADoubleOf('Akeneo\Component\SpreadsheetParser\Xlsx\Styles');
-
+    public function it_creates_value_transformers(
+        DateTransformer $dateTransformer,
+        SharedStrings $sharedStrings,
+        Styles $styles
+    ) {
         $transformer = $this->create($sharedStrings, $styles);
         $transformer->getSharedStrings()->shouldReturn($sharedStrings);
         $transformer->getDateTransformer()->shouldReturn($dateTransformer);

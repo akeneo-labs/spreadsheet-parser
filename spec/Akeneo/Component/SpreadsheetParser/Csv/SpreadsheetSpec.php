@@ -3,12 +3,13 @@
 namespace spec\Akeneo\Component\SpreadsheetParser\Csv;
 
 use PhpSpec\ObjectBehavior;
+use Akeneo\Component\SpreadsheetParser\Csv\RowIterator;
+use Akeneo\Component\SpreadsheetParser\Csv\RowIteratorFactory;
 
 class SpreadsheetSpec extends ObjectBehavior
 {
-    public function let($rowIteratorFactory)
+    public function let(RowIteratorFactory $rowIteratorFactory)
     {
-        $rowIteratorFactory->beADoubleOf('Akeneo\Component\SpreadsheetParser\Csv\RowIteratorFactory');
         $this->beConstructedWith($rowIteratorFactory, 'sheet', 'path');
     }
 
@@ -22,11 +23,11 @@ class SpreadsheetSpec extends ObjectBehavior
         $this->getWorksheets()->shouldReturn(['sheet']);
     }
 
-    public function it_creates_row_iterators($rowIteratorFactory, $rowIterator1, $rowIterator2)
-    {
-        $rowIterator1->beADoubleOf('Akeneo\Component\SpreadsheetParser\Csv\RowIterator');
-        $rowIterator2->beADoubleOf('Akeneo\Component\SpreadsheetParser\Csv\RowIterator');
-
+    public function it_creates_row_iterators(
+        RowIteratorFactory $rowIteratorFactory,
+        RowIterator $rowIterator1,
+        RowIterator $rowIterator2
+    ) {
         $rowIteratorFactory->create('path', ['options1'])->willReturn($rowIterator1);
         $rowIteratorFactory->create('path', ['options2'])->willReturn($rowIterator2);
 

@@ -82,8 +82,10 @@ class Styles extends AbstractXMLDictionnary
                             preg_match('{^(\[\$[[:alpha:]]*-[0-9A-F]*\])*[hmsdy]}i', $xml->getAttribute('formatCode'))
                                 ? static::FORMAT_DATE
                                 : static::FORMAT_DEFAULT;
+                        break;
                     case 'cellXfs' :
                         $needsRewind = true;
+                        break;
                 }
             }
         }
