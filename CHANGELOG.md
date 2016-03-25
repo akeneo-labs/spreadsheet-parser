@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 1.2.0 (2016-03-25)
+ - Use maintained versions of the symfony component
+
 ## 1.1.7 (2015-10-05)
  - Migrate to AkeneoLabs
 
