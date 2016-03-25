@@ -39,7 +39,8 @@ class ValueTransformerFactory
      * Creates a value transformer
      *
      * @param SharedStrings $sharedStrings
-     *
+     * @param Styles        $styles
+     * 
      * @return ValueTransformer
      */
     public function create(SharedStrings $sharedStrings, Styles $styles)

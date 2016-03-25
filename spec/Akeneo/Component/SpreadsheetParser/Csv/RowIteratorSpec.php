@@ -9,7 +9,7 @@ class RowIteratorSpec extends ObjectBehavior
     protected $values = [
         1 => ['value', 'enclosed value', '15'],
         2 => ['', 'value2', ''],
-        3  => ['é', 'è', '€']
+        3 => ['é', 'è', '€']
     ];
 
     public function it_is_initializable()
@@ -20,9 +20,9 @@ class RowIteratorSpec extends ObjectBehavior
 
     public function it_parses_csv_files()
     {
-        $this->beConstructedWith(__DIR__ . '/fixtures/test.csv' , []);
+        $this->beConstructedWith(__DIR__ . '/fixtures/test.csv', []);
         $this->rewind();
-        foreach ($this->values as $i=>$row) {
+        foreach ($this->values as $i => $row) {
             $this->key()->shouldReturn($i);
             $this->valid()->shouldReturn(true);
             $this->current()->shouldReturn($row);
@@ -33,7 +33,7 @@ class RowIteratorSpec extends ObjectBehavior
 
     public function it_can_be_rewinded()
     {
-        $this->beConstructedWith(__DIR__ . '/fixtures/test.csv' , []);
+        $this->beConstructedWith(__DIR__ . '/fixtures/test.csv', []);
         $this->rewind();
         $this->current()->shouldReturn($this->values[1]);
         $this->next();

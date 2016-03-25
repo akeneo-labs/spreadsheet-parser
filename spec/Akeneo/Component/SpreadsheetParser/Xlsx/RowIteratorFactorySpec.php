@@ -44,6 +44,7 @@ class StubRowIterator
     protected $valueTransformer;
     protected $path;
     protected $options;
+
     public function __construct($rowBuilderFactory, $columnIndexTransformer, $valueTransformer, $path, $options)
     {
         $this->rowBuilderFactory = $rowBuilderFactory;
@@ -52,22 +53,27 @@ class StubRowIterator
         $this->path = $path;
         $this->options = $options;
     }
+
     public function getPath()
     {
         return $this->path;
     }
+
     public function getValueTransformer()
     {
         return $this->valueTransformer;
     }
+
     public function getRowBuilderFactory()
     {
         return $this->rowBuilderFactory;
     }
+
     public function getColumnIndexTransformer()
     {
         return $this->columnIndexTransformer;
     }
+
     public function getOptions()
     {
         return $this->options;

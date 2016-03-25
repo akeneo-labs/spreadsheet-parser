@@ -12,7 +12,8 @@ class SpreadsheetLoaderSpec extends ObjectBehavior
         SpreadsheetLoaderInterface $loader,
         SpreadsheetLoaderInterface $otherLoader,
         SpreadsheetInterface $spreadsheet
-    ) {
+    )
+    {
         $this->addLoader('extension', $loader)->addLoader('other_extension', $otherLoader);
         $loader->open('file.extension')->willReturn($spreadsheet);
     }
@@ -24,7 +25,8 @@ class SpreadsheetLoaderSpec extends ObjectBehavior
 
     public function it_uses_the_loader_corresponding_to_the_file_extension(
         SpreadsheetInterface $spreadsheet
-    ) {
+    )
+    {
         $this->open('file.extension')->shouldReturn($spreadsheet);
     }
 

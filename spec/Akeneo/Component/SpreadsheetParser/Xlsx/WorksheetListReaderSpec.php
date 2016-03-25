@@ -2,8 +2,9 @@
 
 namespace spec\Akeneo\Component\SpreadsheetParser\Xlsx;
 
-use PhpSpec\ObjectBehavior;
 use Akeneo\Component\SpreadsheetParser\Xlsx\Relationships;
+use PhpSpec\ObjectBehavior;
+use Prophecy\Argument;
 
 class WorksheetListReaderSpec extends ObjectBehavior
 {

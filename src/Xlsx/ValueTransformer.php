@@ -61,6 +61,7 @@ class ValueTransformer
      *
      * @param DateTransformer $dateTransformer
      * @param SharedStrings   $sharedStrings
+     * @param Styles          $styles
      */
     public function __construct(DateTransformer $dateTransformer, SharedStrings $sharedStrings, Styles $styles)
     {

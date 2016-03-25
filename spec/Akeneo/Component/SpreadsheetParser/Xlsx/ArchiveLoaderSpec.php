@@ -25,10 +25,12 @@ class ArchiveLoaderSpec extends ObjectBehavior
 class StubArchive
 {
     protected $path;
+
     public function __construct($path)
     {
         $this->path = $path;
     }
+
     public function getPath()
     {
         return $this->path;

@@ -16,9 +16,9 @@ class XlsxParser
      */
     const FORMAT_NAME = 'xlsx';
 
-   /**
-    * @staticvar string the name of the macro format
-    */
+    /**
+     * @staticvar string the name of the macro format
+     */
     const MACRO_FORMAT_NAME = 'xlsm';
 
     /**

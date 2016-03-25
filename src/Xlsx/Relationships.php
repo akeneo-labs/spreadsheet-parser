@@ -49,7 +49,7 @@ class Relationships extends AbstractXMLResource
         while ($xml->read()) {
             if (\XMLReader::ELEMENT === $xml->nodeType && 'Relationship' === $xml->name) {
 
-                $type = basename((string) $xml->getAttribute('Type'));
+                $type = basename((string)$xml->getAttribute('Type'));
                 $this->storeRelationShipByType($type, $xml->getAttribute('Id'), 'xl/' . $xml->getAttribute('Target'));
             }
         }

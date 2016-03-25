@@ -14,6 +14,10 @@
             "name": "Matthieu Viel",
             "email": "matthieu.viel@akeneo.com",
             "homepage": "http://akeneo.com"
+        },
+        {
+            "name": "JM Leroux",
+            "email": "jean-marie.leroux@akeneo.com"
         }
     ],
     "require": {

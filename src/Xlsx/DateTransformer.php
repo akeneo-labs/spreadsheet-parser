@@ -35,10 +35,10 @@ class DateTransformer
     {
         $days = floor($value);
 
-        $seconds = round(($value - $days)*86400);
+        $seconds = round(($value - $days) * 86400);
 
         $date = clone $this->baseDate;
-        $date->modify(sprintf('+%sday +%ssecond', $days-1, $seconds));
+        $date->modify(sprintf('+%sday +%ssecond', $days - 1, $seconds));
 
         return $date;
     }

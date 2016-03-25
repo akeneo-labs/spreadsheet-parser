@@ -16,6 +16,7 @@ class RelationshipsLoader
      * @var string
      */
     protected $relationshipClass;
+
     /**
      * Constructor
      *

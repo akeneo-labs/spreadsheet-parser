@@ -36,12 +36,14 @@ class StubValueTransformer
     protected $dateTransformer;
     protected $sharedStrings;
     protected $styles;
+
     public function __construct($dateTransformer, $sharedStrings, $styles)
     {
         $this->sharedStrings = $sharedStrings;
         $this->dateTransformer = $dateTransformer;
         $this->styles = $styles;
     }
+
     public function getSharedStrings()
     {
         return $this->sharedStrings;
@@ -51,6 +53,7 @@ class StubValueTransformer
     {
         return $this->dateTransformer;
     }
+
     public function getStyles()
     {
         return $this->styles;

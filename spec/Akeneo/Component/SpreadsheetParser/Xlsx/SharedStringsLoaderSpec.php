@@ -25,10 +25,12 @@ class SharedStringsLoaderSpec extends ObjectBehavior
 class StubSharedStrings
 {
     protected $path;
+
     public function __construct($path)
     {
         $this->path = $path;
     }
+
     public function getPath()
     {
         return $this->path;
