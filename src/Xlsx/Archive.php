@@ -99,6 +99,8 @@ class Archive
 
     /**
      * Deletes temporary files
+     *
+     * @return null
      */
     protected function deleteTemp()
     {
@@ -120,7 +122,14 @@ class Archive
         rmdir($this->tempPath);
     }
 
-    private function getErrorMessage($errorCode)
+    /**
+     * Gets an error message from the error code
+     *
+     * @param string $errorCode
+     *
+     * @return string
+     */
+    protected function getErrorMessage($errorCode)
     {
         switch ($errorCode) {
             case \ZipArchive::ER_MULTIDISK:
