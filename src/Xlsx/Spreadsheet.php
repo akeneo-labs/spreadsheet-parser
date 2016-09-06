@@ -133,7 +133,8 @@ class Spreadsheet implements SpreadsheetInterface
         return $this->rowIteratorFactory->create(
             $this->getValueTransformer(),
             $this->archive->extract($paths[$worksheetIndex]),
-            $options
+            $options,
+            $this->archive
         );
     }
 
@@ -180,7 +181,7 @@ class Spreadsheet implements SpreadsheetInterface
     {
         if (!$this->sharedStrings) {
             $path = $this->archive->extract($this->relationships->getSharedStringsPath());
-            $this->sharedStrings = $this->sharedStringsLoader->open($path);
+            $this->sharedStrings = $this->sharedStringsLoader->open($path, $this->archive);
         }
 
         return $this->sharedStrings;
@@ -206,7 +207,7 @@ class Spreadsheet implements SpreadsheetInterface
     {
         if (!$this->styles) {
             $path = $this->archive->extract($this->relationships->getStylesPath());
-            $this->styles = $this->stylesLoader->open($path);
+            $this->styles = $this->stylesLoader->open($path, $this->archive);
         }
 
         return $this->styles;

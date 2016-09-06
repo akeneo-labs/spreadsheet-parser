@@ -3,6 +3,7 @@
 namespace spec\Akeneo\Component\SpreadsheetParser\Xlsx;
 
 use PhpSpec\ObjectBehavior;
+use Akeneo\Component\SpreadsheetParser\Xlsx\Archive;
 use Akeneo\Component\SpreadsheetParser\Xlsx\ColumnIndexTransformer;
 use Akeneo\Component\SpreadsheetParser\Xlsx\RowBuilder;
 use Akeneo\Component\SpreadsheetParser\Xlsx\RowBuilderFactory;
@@ -15,7 +16,8 @@ class RowIteratorSpec extends ObjectBehavior
         RowBuilderFactory $rowBuilderFactory,
         ColumnIndexTransformer $columnIndexTransformer,
         ValueTransformer $valueTransformer,
-        RowBuilder $rowBuilder
+        RowBuilder $rowBuilder,
+        Archive $archive
     )
     {
         $startWith = function ($startString) {
@@ -52,7 +54,8 @@ class RowIteratorSpec extends ObjectBehavior
             $columnIndexTransformer,
             $valueTransformer,
             __DIR__ . '/fixtures/sheet.xml',
-            []
+            [],
+            $archive
         );
         $valueTransformer->transform(Argument::type('string'), Argument::type('string'), Argument::type('string'))
             ->will(

@@ -29,12 +29,13 @@ class StylesLoader
     /**
      * Creates a Styles from the archive
      *
-     * @param string $path
+     * @param string  $path
+     * @param Archive $archive The Archive from which the path was extracted
      *
      * @return Styles
      */
-    public function open($path)
+    public function open($path, Archive $archive)
     {
-        return new $this->class($path);
+        return new $this->class($path, $archive);
     }
 }

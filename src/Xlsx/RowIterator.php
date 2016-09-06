@@ -7,7 +7,7 @@ namespace Akeneo\Component\SpreadsheetParser\Xlsx;
  *
  * The iterator returns arrays of results.
  *
- * Empty values are trimed from the right of the rows, and empty rows are skipped.
+ * Empty values are trimmed from the right of the rows, and empty rows are skipped.
  *
  * @author    Antoine Guigan <antoine@akeneo.com>
  * @copyright 2014 Akeneo SAS (http://www.akeneo.com)
@@ -61,6 +61,16 @@ class RowIterator implements \Iterator
     protected $valid;
 
     /**
+     * The Archive from which the path was extracted.
+     *
+     * A reference to the object is kept here to ensure that it is not deleted
+     * before the RowIterator, as this would remove the extraction folder.
+     *
+     * @var Archive
+     */
+    private $archive;
+
+    /**
      * Constructor
      *
      * @param RowBuilderFactory      $rowBuilderFactory
@@ -68,19 +78,22 @@ class RowIterator implements \Iterator
      * @param ValueTransformer       $valueTransformer
      * @param string                 $path
      * @param array                  $options
+     * @param Archive                $archive                The Archive from which the path was extracted
      */
     public function __construct(
         RowBuilderFactory $rowBuilderFactory,
         ColumnIndexTransformer $columnIndexTransformer,
         ValueTransformer $valueTransformer,
         $path,
-        array $options
+        array $options,
+        Archive $archive
     ) {
         $this->rowBuilderFactory = $rowBuilderFactory;
         $this->columnIndexTransformer = $columnIndexTransformer;
         $this->valueTransformer = $valueTransformer;
         $this->path = $path;
         $this->options = $options;
+        $this->archive = $archive;
     }
 
     /**

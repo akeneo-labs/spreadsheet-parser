@@ -22,13 +22,25 @@ abstract class AbstractXMLResource
     private $xml;
 
     /**
+     * The Archive from which the path was extracted.
+     *
+     * A reference to the object is kept here to ensure that it is not deleted
+     * before the RowIterator, as this would remove the extraction folder.
+     *
+     * @var Archive
+     */
+    private $archive;
+
+    /**
      * Constructor
      *
-     * @param string $path path to the extracted shared strings XML file
+     * @param string        $path    path to the extracted shared strings XML file
+     * @param Archive|null  $archive The Archive from which the path was extracted
      */
-    public function __construct($path)
+    public function __construct($path, Archive $archive = null)
     {
         $this->path = $path;
+        $this->archive = $archive;
     }
 
     /**
@@ -76,5 +88,4 @@ abstract class AbstractXMLResource
         $this->xml->close();
         $this->xml = null;
     }
-
 }
