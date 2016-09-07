@@ -115,16 +115,16 @@ class RowIterator implements \Iterator
         while ($this->xml->read()) {
             if (\XMLReader::ELEMENT === $this->xml->nodeType) {
                 switch ($this->xml->name) {
-                    case 'row' :
+                    case 'row':
                         $currentKey = (int)$this->xml->getAttribute('r');
                         $rowBuilder = $this->rowBuilderFactory->create();
                         break;
-                    case 'c' :
+                    case 'c':
                         $columnIndex = $this->columnIndexTransformer->transform($this->xml->getAttribute('r'));
                         $style = $this->getValue($this->xml->getAttribute('s'));
                         $type = $this->getValue($this->xml->getAttribute('t'));
                         break;
-                    case 'v' :
+                    case 'v':
                         $rowBuilder->addValue(
                             $columnIndex,
                             $this->valueTransformer->transform($this->xml->readString(), $type, $style)
@@ -133,7 +133,7 @@ class RowIterator implements \Iterator
                 }
             } elseif (\XMLReader::END_ELEMENT === $this->xml->nodeType) {
                 switch ($this->xml->name) {
-                    case 'row' :
+                    case 'row':
                         $currentValue = $rowBuilder->getData();
                         if (count($currentValue)) {
                             $this->currentKey = $currentKey;
@@ -143,7 +143,7 @@ class RowIterator implements \Iterator
                             return;
                         }
                         break;
-                    case 'sheetData' :
+                    case 'sheetData':
                         break 2;
                 }
             }

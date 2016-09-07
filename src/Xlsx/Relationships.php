@@ -99,13 +99,13 @@ class Relationships extends AbstractXMLResource
     private function storeRelationShipByType($type, $id, $target)
     {
         switch ($type) {
-            case 'worksheet' :
+            case 'worksheet':
                 $this->workSheetPaths[$id] = $target;
                 break;
-            case 'styles' :
+            case 'styles':
                 $this->stylePath = $target;
                 break;
-            case 'sharedStrings' :
+            case 'sharedStrings':
                 $this->sharedStringPath = $target;
                 break;
         }

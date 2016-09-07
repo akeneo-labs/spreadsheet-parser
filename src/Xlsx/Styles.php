@@ -77,13 +77,13 @@ class Styles extends AbstractXMLDictionnary
                 break;
             } elseif (\XMLReader::ELEMENT === $xml->nodeType) {
                 switch ($xml->name) {
-                    case 'numFmt' :
+                    case 'numFmt':
                         $this->numberFormats[$xml->getAttribute('numFmtId')] =
                             preg_match('{^(\[\$[[:alpha:]]*-[0-9A-F]*\])*[hmsdy]}i', $xml->getAttribute('formatCode'))
                                 ? static::FORMAT_DATE
                                 : static::FORMAT_DEFAULT;
                         break;
-                    case 'cellXfs' :
+                    case 'cellXfs':
                         $needsRewind = true;
                         break;
                 }
