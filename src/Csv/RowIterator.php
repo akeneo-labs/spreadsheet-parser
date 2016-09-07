@@ -36,7 +36,7 @@ class RowIterator implements \Iterator
     protected $fileHandle;
 
     /**
-     * @var array
+     * @var int
      */
     protected $currentKey;
 
@@ -140,8 +140,6 @@ class RowIterator implements \Iterator
 
     /**
      * Opens the file resource
-     *
-     * @return resource
      */
     protected function openResource()
     {

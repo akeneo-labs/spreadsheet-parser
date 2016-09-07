@@ -21,8 +21,8 @@ class SpreadsheetLoader implements SpreadsheetLoaderInterface
     /**
      * Opens a spreadsheet
      *
-     * @param string $path
-     * @param string $type
+     * @param string      $path
+     * @param string|null $type
      *
      * @return SpreadsheetInterface
      *

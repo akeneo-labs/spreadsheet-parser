@@ -16,7 +16,7 @@ interface SpreadsheetInterface
      *
      * The keys of the array should be the indexes of the worksheets
      *
-     * @return array
+     * @return string[]
      */
     public function getWorksheets();
 
@@ -35,7 +35,7 @@ interface SpreadsheetInterface
      *
      * @param string $name
      *
-     * @return int
+     * @return int|false Returns false in case there is no worksheet with this name
      */
     public function getWorksheetIndex($name);
 }
