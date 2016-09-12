@@ -31,13 +31,14 @@ class SharedStringsLoader
     /**
      * Creates a SharedStrings from the archive
      *
-     * @param string $path
+     * @param string  $path
+     * @param Archive $archive The Archive from which the path was extracted
      *
      * @return SharedStrings
      */
-    public function open($path)
+    public function open($path, Archive $archive)
     {
-        return new $this->sharedStringsClass($path);
+        return new $this->sharedStringsClass($path, $archive);
     }
 
 }

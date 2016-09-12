@@ -2,6 +2,7 @@
 
 namespace spec\Akeneo\Component\SpreadsheetParser\Xlsx;
 
+use Akeneo\Component\SpreadsheetParser\Xlsx\Archive;
 use PhpSpec\ObjectBehavior;
 use Akeneo\Component\SpreadsheetParser\Xlsx\ColumnIndexTransformer;
 use Akeneo\Component\SpreadsheetParser\Xlsx\RowBuilderFactory;
@@ -26,9 +27,10 @@ class RowIteratorFactorySpec extends ObjectBehavior
     public function it_creates_row_iterators(
         RowBuilderFactory $rowBuilderFactory,
         ColumnIndexTransformer $columnIndexTransformer,
-        ValueTransformer $valueTransformer
+        ValueTransformer $valueTransformer,
+        Archive $archive
     ) {
-        $iterator = $this->create($valueTransformer, 'path', ['options']);
+        $iterator = $this->create($valueTransformer, 'path', ['options'], $archive);
         $iterator->getPath()->shouldReturn('path');
         $iterator->getOptions()->shouldReturn(['options']);
         $iterator->getValueTransformer()->shouldReturn($valueTransformer);

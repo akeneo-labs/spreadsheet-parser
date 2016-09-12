@@ -65,11 +65,11 @@ class SpreadsheetSpec extends ObjectBehavior
         $relationships->getSharedStringsPath()->willReturn('shared_strings');
         $relationships->getStylesPath()->willReturn('styles');
 
-        $sharedStringsLoader->open('temp_shared_strings')
+        $sharedStringsLoader->open('temp_shared_strings', $archive)
             ->should($beCalledAtMostOnce)
             ->willReturn($sharedStrings);
 
-        $stylesLoader->open(('temp_styles'))->willReturn($styles);
+        $stylesLoader->open(('temp_styles'), $archive)->willReturn($styles);
         $valueTransformerFactory->create($sharedStrings, $styles)->willReturn($valueTransformer);
 
         $worksheetListReader->getWorksheetPaths($relationships, 'temp_' . Spreadsheet::WORKBOOK_PATH)
@@ -91,10 +91,11 @@ class SpreadsheetSpec extends ObjectBehavior
         ValueTransformer $valueTransformer,
         RowIteratorFactory $rowIteratorFactory,
         RowIterator $rowIterator1,
-        RowIterator $rowIterator2
+        RowIterator $rowIterator2,
+        Archive $archive
     ) {
-        $rowIteratorFactory->create($valueTransformer, 'temp_path1', [])->willReturn($rowIterator1);
-        $rowIteratorFactory->create($valueTransformer, 'temp_path2', [])->willReturn($rowIterator2);
+        $rowIteratorFactory->create($valueTransformer, 'temp_path1', [], $archive)->willReturn($rowIterator1);
+        $rowIteratorFactory->create($valueTransformer, 'temp_path2', [], $archive)->willReturn($rowIterator2);
 
         $this->createRowIterator(0)->shouldReturn($rowIterator1);
         $this->createRowIterator(1)->shouldReturn($rowIterator2);
