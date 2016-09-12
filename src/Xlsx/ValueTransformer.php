@@ -82,16 +82,16 @@ class ValueTransformer
     public function transform($value, $type, $style)
     {
         switch ($type) {
-            case static::TYPE_BOOL :
+            case static::TYPE_BOOL:
                 return ('1' === $value);
-            case static::TYPE_SHARED_STRING :
+            case static::TYPE_SHARED_STRING:
                 return rtrim($this->sharedStrings->get($value));
             case '':
-            case static::TYPE_NUMBER :
+            case static::TYPE_NUMBER:
                 return $style && (Styles::FORMAT_DATE === $this->styles->get($style))
                     ? $this->dateTransformer->transform($value)
                     : $value * 1;
-            default :
+            default:
                 return rtrim($value);
         }
     }
