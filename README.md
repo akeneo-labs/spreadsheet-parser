@@ -41,7 +41,7 @@ By using the CSV parser options, you can specify the format of your CSV file :
 
     $workbook = SpreadsheetParser::open('myfile.csv');
 
-    $iterator = $workbook->createIterator(
+    $iterator = $workbook->createRowIterator(
         0,
         [
             'encoding'  => 'UTF-8',
@@ -53,7 +53,7 @@ By using the CSV parser options, you can specify the format of your CSV file :
     );
    
     
-    foreach ($workbook->createIterator($myWorksheetIndex) as $rowIndex => $values) {
+    foreach ($workbook->createRowIterator(0) as $rowIndex => $values) {
         var_dump($rowIndex, $values);
     }
 ```
