@@ -124,6 +124,9 @@ class RowIterator implements \Iterator
                             $this->valueTransformer->transform($this->xml->readString(), $type, $style)
                         );
                         break;
+                    case 'is':
+                        $rowBuilder->addValue( $columnIndex, $this->xml->readString() );
+                        break;
                 }
             } elseif (\XMLReader::END_ELEMENT === $this->xml->nodeType) {
                 switch ($this->xml->name) {
