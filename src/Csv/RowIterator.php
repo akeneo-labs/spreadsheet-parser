@@ -127,7 +127,7 @@ class RowIterator implements \Iterator
      */
     protected function setDefaultOptions(OptionsResolver $resolver)
     {
-        $resolver->setOptional(  array( 'encoding' )   );
+        $resolver->setOptional(array('encoding'));
         $resolver->setDefaults(
             array(
                 'length'    => null,
