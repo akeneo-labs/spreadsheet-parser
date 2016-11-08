@@ -24,7 +24,7 @@ class Styles extends AbstractXMLDictionnary
     /**
      * @var array
      */
-    protected $nativeDateFormats = array( 14, 15, 16, 17, 18, 19, 20, 21, 22 );
+    protected $nativeDateFormats = array(14,15,16,17,18,19,20,21,22);
 
     /**
      * @var array
