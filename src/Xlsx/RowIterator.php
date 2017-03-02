@@ -61,6 +61,11 @@ class RowIterator implements \Iterator
     protected $valid;
 
     /**
+     * @var int
+     */
+    protected $maxColumnCount;
+
+    /**
      * The Archive from which the path was extracted.
      *
      * A reference to the object is kept here to ensure that it is not deleted
@@ -94,6 +99,7 @@ class RowIterator implements \Iterator
         $this->path = $path;
         $this->options = $options;
         $this->archive = $archive;
+        $this->maxColumnCount = null;
     }
 
     /**
@@ -148,6 +154,15 @@ class RowIterator implements \Iterator
                 switch ($this->xml->name) {
                     case 'row':
                         $currentValue = $rowBuilder->getData();
+
+                        if($this->maxColumnCount < count($currentValue)) {
+                            $this->maxColumnCount = count($currentValue);
+                        }
+
+                        if(count($currentValue) < $this->maxColumnCount) {
+                            array_push($currentValue, '');
+                        }
+
                         if (count($currentValue)) {
                             $this->currentKey = $currentKey;
                             $this->currentValue = $currentValue;
@@ -173,6 +188,7 @@ class RowIterator implements \Iterator
         }
         $this->xml = new \XMLReader();
         $this->xml->open($this->path);
+
         $this->next();
     }
 
