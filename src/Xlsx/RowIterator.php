@@ -71,6 +71,11 @@ class RowIterator implements \Iterator
     private $archive;
 
     /**
+    * @var int
+    */
+    protected $maxColumnHeaderCount;
+
+    /**
      * Constructor
      *
      * @param RowBuilderFactory      $rowBuilderFactory
@@ -94,6 +99,7 @@ class RowIterator implements \Iterator
         $this->path = $path;
         $this->options = $options;
         $this->archive = $archive;
+        $this->maxColumnCount = 0;
     }
 
     /**
@@ -143,14 +149,22 @@ class RowIterator implements \Iterator
                             $this->valueTransformer->transform($this->xml->readString(), $type, $style)
                         );
                         break;
-                    case 'is':
-                        $rowBuilder->addValue($columnIndex, $this->xml->readString());
-                        break;
                 }
             } elseif (\XMLReader::END_ELEMENT === $this->xml->nodeType) {
                 switch ($this->xml->name) {
                     case 'row':
                         $currentValue = $rowBuilder->getData();
+
+                        if($currentKey === 1) {
+                            if($this->maxColumnHeaderCount < count($currentValue)) {
+                                $this->maxColumnHeaderCount = count($currentValue);
+                            }
+                        } elseif (count($currentValue) < $this->maxColumnHeaderCount) {
+                            for($i = count($currentValue); $i < $this->maxColumnHeaderCount; $i++) {
+                                $currentValue[] = '';
+                            }
+                        }
+
                         if (count($currentValue)) {
                             $this->currentKey = $currentKey;
                             $this->currentValue = $currentValue;
