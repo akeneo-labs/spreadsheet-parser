@@ -146,6 +146,14 @@ class RowIterator implements \Iterator
                     case 'is':
                         $rowBuilder->addValue($columnIndex, $this->xml->readString());
                         break;
+                    case 't':
+                        if($type == ValueTransformer::TYPE_INLINE_STRING) {
+                            $rowBuilder->addValue(
+                                $columnIndex,
+                                $this->valueTransformer->transform($this->xml->readString(), $type, $style)
+                                );
+                        }
+                        break;
                 }
             } elseif (\XMLReader::END_ELEMENT === $this->xml->nodeType) {
                 switch ($this->xml->name) {
