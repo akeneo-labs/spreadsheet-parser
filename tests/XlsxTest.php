@@ -2,6 +2,7 @@
 
 use Akeneo\Component\SpreadsheetParser\SpreadsheetParser;
 use Akeneo\Component\SpreadsheetParser\Xlsx\XlsxParser;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Functional tests for XLSX files
@@ -10,7 +11,7 @@ use Akeneo\Component\SpreadsheetParser\Xlsx\XlsxParser;
  * @copyright 2014 Akeneo SAS (http://www.akeneo.com)
  * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
-class XlsxTest extends PHPUnit_Framework_TestCase
+class XlsxTest extends TestCase
 {
     public function testLibreOfficeFile()
     {

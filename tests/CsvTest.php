@@ -2,6 +2,7 @@
 
 use Akeneo\Component\SpreadsheetParser\Csv\CsvParser;
 use Akeneo\Component\SpreadsheetParser\SpreadsheetParser;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Functional tests for CSV files
@@ -10,7 +11,7 @@ use Akeneo\Component\SpreadsheetParser\SpreadsheetParser;
  * @copyright 2014 Akeneo SAS (http://www.akeneo.com)
  * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
-class CsvTest extends PHPUnit_Framework_TestCase
+class CsvTest extends TestCase
 {
     public function testReadFile()
     {
