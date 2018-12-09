@@ -33,7 +33,8 @@ before_install:
 
 install:
     - composer update $COMPOSER_FLAGS
+    - bin/simple-phpunit install
 
 script:
     - bin/phpspec run -f dot
-    - phpunit -v
+    - bin/simple-phpunit -v
