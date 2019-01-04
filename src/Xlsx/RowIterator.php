@@ -71,6 +71,11 @@ class RowIterator implements \Iterator
     private $archive;
 
     /**
+    * @var int
+    */
+    protected $maxColumnHeaderCount;
+
+    /**
      * Constructor
      *
      * @param RowBuilderFactory      $rowBuilderFactory
@@ -94,6 +99,7 @@ class RowIterator implements \Iterator
         $this->path = $path;
         $this->options = $options;
         $this->archive = $archive;
+        $this->maxColumnCount = 0;
     }
 
     /**
@@ -151,6 +157,17 @@ class RowIterator implements \Iterator
                 switch ($this->xml->name) {
                     case 'row':
                         $currentValue = $rowBuilder->getData();
+
+                        if($currentKey === 1) {
+                            if($this->maxColumnHeaderCount < count($currentValue)) {
+                                $this->maxColumnHeaderCount = count($currentValue);
+                            }
+                        } elseif (count($currentValue) < $this->maxColumnHeaderCount) {
+                            for($i = count($currentValue); $i < $this->maxColumnHeaderCount; $i++) {
+                                $currentValue[] = '';
+                            }
+                        }
+
                         if (count($currentValue)) {
                             $this->currentKey = $currentKey;
                             $this->currentValue = $currentValue;
