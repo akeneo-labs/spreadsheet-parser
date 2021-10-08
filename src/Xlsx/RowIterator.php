@@ -2,12 +2,15 @@
 
 namespace Akeneo\Component\SpreadsheetParser\Xlsx;
 
+use Symfony\Component\OptionsResolver\OptionsResolver;
+
 /**
  * Row iterator for an Excel worksheet
  *
  * The iterator returns arrays of results.
  *
- * Empty values are trimmed from the right of the rows, and empty rows are skipped.
+ * The following options are available :
+ *  - allow_empty_values:    if true, will iterate over empty rows. DEFAULT: false
  *
  * @author    Antoine Guigan <antoine@akeneo.com>
  * @copyright 2014 Akeneo SAS (http://www.akeneo.com)
@@ -92,8 +95,26 @@ class RowIterator implements \Iterator
         $this->columnIndexTransformer = $columnIndexTransformer;
         $this->valueTransformer = $valueTransformer;
         $this->path = $path;
-        $this->options = $options;
         $this->archive = $archive;
+
+        $resolver = new OptionsResolver;
+        $this->setDefaultOptions($resolver);
+        $this->options = $resolver->resolve($options);
+    }
+
+    /**
+     * Sets the default options
+     *
+     * @param OptionsResolver $resolver
+     */
+    protected function setDefaultOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefined(['encoding']);
+        $resolver->setDefaults(
+            [
+                'allow_empty_values'    => false
+            ]
+        );
     }
 
     /**
@@ -110,6 +131,11 @@ class RowIterator implements \Iterator
     public function key()
     {
         return $this->currentKey;
+    }
+
+    private function allowsEmptyValues()
+    {
+        return isset($this->options['allow_empty_values']) && $this->options['allow_empty_values'] === true;
     }
 
     /**
@@ -140,11 +166,12 @@ class RowIterator implements \Iterator
                     case 'v':
                         $rowBuilder->addValue(
                             $columnIndex,
-                            $this->valueTransformer->transform($this->xml->readString(), $type, $style)
+                            $this->valueTransformer->transform($this->xml->readString(), $type, $style),
+                            $this->allowsEmptyValues()
                         );
                         break;
                     case 'is':
-                        $rowBuilder->addValue($columnIndex, $this->xml->readString());
+                        $rowBuilder->addValue($columnIndex, $this->xml->readString(), $this->allowsEmptyValues());
                         break;
                 }
             } elseif (\XMLReader::END_ELEMENT === $this->xml->nodeType) {

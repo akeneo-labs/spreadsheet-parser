@@ -23,10 +23,11 @@ class RowBuilder
      *
      * @param int    $columnIndex
      * @param string $value
+     * @param bool   $allowEmptyValues
      */
-    public function addValue($columnIndex, $value)
+    public function addValue($columnIndex, $value, $allowEmptyValues = false)
     {
-        if ('' !== $value) {
+        if ('' !== $value || $allowEmptyValues) {
             $this->values[$columnIndex] = $value;
         }
     }
